@@ -412,28 +412,28 @@ Content-Type: application/json
 
 
 
-## Technical Implementation Decisions
+# Technical Implementation Decisions
 
-### Use of JPA (JPQL) vs Java Streams in Task 5
+## Use of JPA (JPQL) vs Java Streams in Task 5
 
-In implementing the guide total price calculation (`/trips/guides/totalprice`), I chose to use JPQL (Java Persistence Query Language) over Java Streams for several key reasons:
+In implementing the guide total price calculation (`/trips/guides/totalprice`), I chose to use JPQL (Java Persistence Query Language) instead of Java Streams. This decision was based on several critical factors:
 
-1. **Performance Optimization**
-    - JPQL performs aggregation (SUM) at the database level
-    - Streams would require loading all trips and guides into memory first
-    - Database engines are optimized for grouping and aggregation operations
+### Performance Optimization
+- By using JPQL, the aggregation (i.e., the `SUM` of trip prices) is performed directly at the database level. Database systems are highly optimized for such aggregation operations, allowing them to execute the `SUM` function efficiently while grouping the results.
+- If Java Streams were used, all guide and trip data would need to be loaded into the application memory first, followed by in-memory processing to compute the sums. This would lead to unnecessary processing overhead, particularly for large datasets.
 
-2. **Memory Efficiency**
-    - JPQL only transfers the final aggregated results
-    - Streams approach would require loading entire object graphs
-    - Reduced memory footprint in the application server
+### Memory Efficiency
+- JPQL allows us to execute the aggregation at the source and retrieve only the final results. This means that only the relevant aggregated data is transferred from the database, minimizing memory consumption.
+- Using Streams would involve loading the entire set of guide and trip entities into memory before performing the aggregation, which could result in higher memory usage, especially with larger databases.
 
-3. **Network Optimization**
-    - Minimizes data transfer between database and application
-    - Only aggregated results traverse the network
-    - Particularly important for larger datasets
+### Network Optimization
+- By performing the aggregation in JPQL, we limit the volume of data being transferred from the database to the application. Only the aggregated results are transferred, minimizing network bandwidth usage.
+- If Java Streams were used, all records for guides and their trips would need to be retrieved from the database first, leading to significantly larger data transfers and potential network performance bottlenecks.
 
-4. **Query Example**
+### Readability and Conciseness
+- The JPQL approach results in more concise and readable code, which directly expresses the intent of the query—calculating the total price for each guide. In contrast, using Java Streams would require additional code to collect, filter, and aggregate the data, which could be more cumbersome to read and maintain.
+
+The JPQL query used is:
 ```sql
 SELECT NEW map(
     g.id as guideId,
@@ -443,24 +443,23 @@ FROM Guide g
 LEFT JOIN g.trips t 
 GROUP BY g.id
 ```
+This query ensures that each guide is listed, even those without any trips, thanks to the `LEFT JOIN`. The `COALESCE` function is used to handle cases where a guide has no trips, ensuring a total price of `0.0` is returned in such scenarios.
 
-### Use of @SuppressWarnings("unchecked")
+## Use of `@SuppressWarnings("unchecked")`
 
-In the DAO implementation, I use `@SuppressWarnings("unchecked")` for the JPQL query result. Here's why:
+In the DAO implementation, `@SuppressWarnings("unchecked")` is used for the JPQL query result. This choice has a specific purpose:
 
-1. **Type Safety vs Runtime Safety**
-    - JPQL's `NEW map` constructor can't be statically typed at compile time
-    - The query result is type-safe at runtime but Java can't verify this during compilation
-    - We know the exact structure of our result (List<Map<String, Object>>)
+### Type Safety vs. Runtime Safety
+- The JPQL query uses the `NEW map` constructor to create a map representing the results, which cannot be statically typed at compile time. The query returns a raw `List` that needs to be cast to `List<Map<String, Object>>`.
+- Although the compiler cannot verify the type safety of this cast, we are confident about the structure of our query results, which makes this suppression safe.
 
-2. **Compiler Behavior**
-    - Java's type system requires us to cast the raw List returned by JPQL
-    - The compiler warns about this cast, even though we know it's safe
-    - @SuppressWarnings removes the warning for this specific, safe usage
-   
-This implementation provides the optimal balance between performance, resource usage, and type safety while maintaining clean, maintainable code.
+### Cleaner Code
+- Java's type system requires us to cast the raw list returned by the JPQL query, and without `@SuppressWarnings`, the compiler will generate warnings about potential type safety issues.
+- Using `@SuppressWarnings` allows us to avoid these warnings for this specific, well-understood use case, keeping the code cleaner and free from unnecessary noise.
 
+## Summary
 
+This implementation leverages JPQL to provide optimal performance, memory efficiency, and reduced network overhead while ensuring clear and concise code. The use of `@SuppressWarnings("unchecked")` is a pragmatic choice to maintain type safety where the compiler's warnings are not applicable. Together, these decisions contribute to an efficient, maintainable, and scalable solution.
 ### Use of @JsonInclude(JsonInclude.Include.NON_NULL)
 
 In our DTOs (Data Transfer Objects), we use the `@JsonInclude(JsonInclude.Include.NON_NULL)` annotation for several important reasons:
