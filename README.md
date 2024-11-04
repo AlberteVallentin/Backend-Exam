@@ -412,9 +412,6 @@ Content-Type: application/json
 
 
 
-
-
-
 ## Technical Implementation Decisions
 
 ### Use of JPA (JPQL) vs Java Streams
