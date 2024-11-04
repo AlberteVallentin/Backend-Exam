@@ -1,0 +1,103 @@
+### Login first to get token (kopier token fra response til env fil)
+POST http://localhost:7070/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "user@example.com",
+  "password": "password123"
+}
+
+### Task 4.11: Testing database endpoints
+
+### 1. Get all doctors (public)
+GET http://localhost:7070/api/doctors
+Accept: application/json
+
+### 2. Get specific doctor (public)
+GET http://localhost:7070/api/doctors/1
+Accept: application/json
+
+### 3. Get specific doctor (not found)
+GET http://localhost:7070/api/doctors/999
+Accept: application/json
+
+### 4. Get doctors by speciality (public)
+GET http://localhost:7070/api/doctors/speciality/FAMILY_MEDICINE
+Accept: application/json
+
+### 5. Get doctors by speciality (not found)
+GET http://localhost:7070/api/doctors/speciality/PEDIATRICS
+Accept: application/json
+
+### 6. Get doctors by birthdate range (public)
+GET http://localhost:7070/api/doctors/birthdate/range?from=1970-01-01&to=1985-12-31
+Accept: application/json
+
+### 7. Get doctors by birthdate range (invalid range)
+GET http://localhost:7070/api/doctors/birthdate/range?from=1985-01-01&to=1980-12-31
+Accept: application/json
+
+### 8. Create new doctor (protected - USER role)
+POST http://localhost:7070/api/doctors
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{jwt_token}}
+
+{
+  "name": "Dr. Clara Lee",
+  "dateOfBirth": "1983-07-22",
+  "yearOfGraduation": 2008,
+  "nameOfClinic": "Green Valley Hospital",
+  "speciality": "PEDIATRICS"
+}
+
+### 9. Create new doctor (validation error)
+POST http://localhost:7070/api/doctors
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{jwt_token}}
+
+{
+  "name": "",
+  "dateOfBirth": "1983-07-22",
+  "yearOfGraduation": 1800,
+  "speciality": "PEDIATRICS"
+}
+
+### 10. Update doctor (protected - USER role)
+PUT http://localhost:7070/api/doctors/1
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{jwt_token}}
+
+{
+  "name": "Dr. Alice Smith",
+  "dateOfBirth": "1975-04-12",
+  "yearOfGraduation": 2001,
+  "nameOfClinic": "City Health Clinic Updated",
+  "speciality": "FAMILY_MEDICINE"
+}
+
+### 11. Update doctor (not found)
+PUT http://localhost:7070/api/doctors/999
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{jwt_token}}
+
+{
+  "name": "Dr. Not Found",
+  "dateOfBirth": "1975-04-12",
+  "yearOfGraduation": 2001,
+  "nameOfClinic": "Not Found Clinic",
+  "speciality": "FAMILY_MEDICINE"
+}
+
+### 12. Delete doctor (protected - ADMIN role)
+DELETE http://localhost:7070/api/doctors/2
+Accept: application/json
+Authorization: Bearer {{jwt_token}}
+
+### 13. Delete doctor (not found)
+DELETE http://localhost:7070/api/doctors/999
+Accept: application/json
+Authorization: Bearer {{jwt_token}}

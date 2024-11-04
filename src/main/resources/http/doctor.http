@@ -1,0 +1,222 @@
+
+### Register new user
+POST {{url}}/auth/register
+Content-Type: application/json
+
+{
+  "name": "Test User",
+  "email": "test@user.dk",
+  "password": "test123",
+  "roleType": "USER"
+}
+
+
+### Login user
+POST {{url}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "test@user.dk",
+  "password": "test123"
+}
+
+> {% client.global.set("jwt_token", response.body.token); %}
+
+
+
+
+### Login admin
+POST {{url}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "test@admin.dk",
+  "password": "test123"
+}
+
+> {% client.global.set("jwt_token", response.body.token); %}
+
+### Add admin role to user
+POST {{url}}/auth/user/addrole
+Content-Type: application/json
+Authorization: Bearer {{auth_token}}
+
+{
+  "role": "ADMIN"
+}
+
+
+### Reset token
+GET {{url}}/auth/test/
+
+> {%
+    client.global.set("jwt_token", null);
+    console.log("JWT Token:", client.global.get("jwt_token"));
+%}
+
+### 1. GET all doctors
+GET {{url}}/doctors
+Accept: application/json
+Authorization: Bearer {{jwt_token}}
+
+
+
+### 2. GET doctor by ID
+GET {{url}}/doctors/1
+Accept: application/json
+Authorization: Bearer {{jwt_token}}
+
+
+### Invalid ID format
+GET {{url}}/doctors/abc
+Accept: application/json
+Authorization: Bearer {{jwt_token}}
+
+
+### Non-existent ID
+GET {{url}}/doctors/99
+Accept: application/json
+Authorization: Bearer {{jwt_token}}
+
+### Invalid negative ID
+GET {{url}}/doctors/-1
+Accept: application/json
+Authorization: Bearer {{jwt_token}}
+
+### 3. GET doctors by speciality
+GET {{url}}/doctors/speciality/SURGERY
+Accept: application/json
+Authorization: Bearer {{jwt_token}}
+
+### Invalid speciality
+GET {{url}}/doctors/speciality/INVALID_SPECIALITY
+Accept: application/json
+Authorization: Bearer {{jwt_token}}
+
+
+### Empty result set for valid speciality
+GET {{url}}/doctors/speciality/
+Accept: application/json
+Authorization: Bearer {{jwt_token}}
+
+### 4. GET doctors by birthdate range
+GET {{url}}/doctors/birthdate/range?from=1975-01-01&to=1980-12-31
+Accept: application/json
+Authorization: Bearer {{jwt_token}}
+
+### Invalid date format
+GET {{url}}/doctors/birthdate/range?from=1975-1-1&to=1980-12-31
+Accept: application/json
+Authorization: Bearer {{jwt_token}}
+
+### Missing date parameters
+GET {{url}}/doctors/birthdate/range
+Accept: application/json
+Authorization: Bearer {{jwt_token}}
+
+### Invalid date range (from after to)
+GET {{url}}/doctors/birthdate/range?from=1980-01-01&to=1975-01-01
+Accept: application/json
+Authorization: Bearer {{jwt_token}}
+
+### No doctors in date range
+GET {{url}}/doctors/birthdate/range?from=1960-01-01&to=1965-01-01
+Accept: application/json
+Authorization: Bearer {{jwt_token}}
+
+
+
+### 5. POST create new doctor
+POST {{url}}/doctors
+Content-Type: application/json
+Authorization: Bearer {{jwt_token}}
+
+{
+  "name": "Dr. Sophus Olsson",
+  "dateOfBirth": "1980-05-21",
+  "yearOfGraduation": 2008,
+  "nameOfClinic": "Green Valley Hospital",
+  "speciality": "PEDIATRICS"
+}
+
+### Missing required fields
+POST {{url}}/doctors
+Content-Type: application/json
+Authorization: Bearer {{jwt_token}}
+
+{
+  "name": "Dr. Invalid Doctor",
+  "speciality": "PEDIATRICS"
+}
+
+### Invalid graduation year
+POST {{url}}/doctors
+Content-Type: application/json
+Authorization: Bearer {{jwt_token}}
+
+{
+  "name": "Dr. Invalid Year",
+  "dateOfBirth": "1980-05-21",
+  "yearOfGraduation": 1800,
+  "nameOfClinic": "Test Clinic",
+  "speciality": "PEDIATRICS"
+}
+
+### Invalid speciality
+POST {{url}}/doctors
+Content-Type: application/json
+Authorization: Bearer {{jwt_token}}
+
+{
+  "name": "Dr. Invalid Speciality",
+  "dateOfBirth": "1980-05-21",
+  "yearOfGraduation": 2008,
+  "nameOfClinic": "Test Clinic",
+  "speciality": "INVALID_SPECIALITY"
+}
+
+### Invalid date format
+POST {{url}}/doctors
+Content-Type: application/json
+Authorization: Bearer {{jwt_token}}
+
+{
+  "name": "Dr. Invalid Date",
+  "dateOfBirth": "1980/05/21",
+  "yearOfGraduation": 2008,
+  "nameOfClinic": "Test Clinic",
+  "speciality": "PEDIATRICS"
+}
+
+### 6. PUT update doctor
+PUT {{url}}/doctors/1
+Content-Type: application/json
+Authorization: Bearer {{jwt_token}}
+
+{
+  "name": "Dr. Alice Smith",
+  "dateOfBirth": "1975-04-12",
+  "yearOfGraduation": 2001,
+  "nameOfClinic": "City Health Clinic Updated",
+  "speciality": "FAMILY_MEDICINE"
+}
+
+
+### Non-existent ID
+PUT {{url}}/doctors/999
+Content-Type: application/json
+Authorization: Bearer {{jwt_token}}
+
+{
+  "name": "Dr. Not Found",
+  "dateOfBirth": "1975-04-12",
+  "yearOfGraduation": 2001,
+  "nameOfClinic": "Not Found Clinic",
+  "speciality": "FAMILY_MEDICINE"
+}
+
+
+
+### DELETE doctor
+DELETE {{url}}/doctors/7
+Authorization: Bearer {{jwt_token}}
