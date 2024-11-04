@@ -1,0 +1,99 @@
+package dat.controllers;
+
+import dat.config.HibernateConfig;
+import dat.daos.impl.TripDAO;
+import dat.dtos.TripDTO;
+import dat.exceptions.ApiException;
+import dat.exceptions.ValidationException;
+import io.javalin.http.Context;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class TripController {
+    private final TripDAO tripDAO = TripDAO.getInstance(HibernateConfig.getEntityManagerFactory());
+
+    public void getAll(Context ctx) throws ApiException {
+        List<TripDTO> trips = tripDAO.getAll();
+        ctx.json(trips);
+        ctx.status(200);
+    }
+
+    public void getById(Context ctx) throws ApiException, ValidationException {
+        int id = validateId(ctx);
+        TripDTO trip = tripDAO.getById(id);
+        ctx.json(trip);
+        ctx.status(200);
+    }
+
+    public void create(Context ctx) throws ApiException, ValidationException {
+        TripDTO tripDTO = validateEntity(ctx);
+        TripDTO created = tripDAO.create(tripDTO);
+        ctx.json(created);
+        ctx.status(201);
+    }
+
+    public void update(Context ctx) throws ApiException, ValidationException {
+        int id = validateId(ctx);
+        TripDTO tripDTO = validateEntity(ctx);
+        TripDTO updated = tripDAO.update(id, tripDTO);
+        ctx.json(updated);
+        ctx.status(200);
+    }
+
+    public void delete(Context ctx) throws ApiException, ValidationException {
+        int id = validateId(ctx);
+        tripDAO.delete(id);
+        ctx.status(204);
+    }
+
+    public void addGuideToTrip(Context ctx) throws ApiException, ValidationException {
+        int tripId = Integer.parseInt(ctx.pathParam("tripId"));
+        int guideId = Integer.parseInt(ctx.pathParam("guideId"));
+        tripDAO.addGuideToTrip(tripId, guideId);
+        ctx.status(200);
+    }
+
+    private int validateId(Context ctx) throws ValidationException {
+        try {
+            return Integer.parseInt(ctx.pathParam("id"));
+        } catch (NumberFormatException e) {
+            throw new ValidationException(400, "Invalid ID format");
+        }
+    }
+
+    private TripDTO validateEntity(Context ctx) throws ValidationException {
+        TripDTO trip = ctx.bodyAsClass(TripDTO.class);
+        List<String> errors = new ArrayList<>();
+
+        if (trip.getName() == null || trip.getName().trim().isEmpty()) {
+            errors.add("Trip name is required");
+        }
+        if (trip.getStartTime() == null) {
+            errors.add("Start time is required");
+        }
+        if (trip.getEndTime() == null) {
+            errors.add("End time is required");
+        }
+        if (trip.getLongitude() == null) {
+            errors.add("Longitude is required");
+        }
+        if (trip.getLatitude() == null) {
+            errors.add("Latitude is required");
+        }
+        if (trip.getPrice() == null || trip.getPrice() <= 0) {
+            errors.add("Valid price is required (must be greater than 0)");
+        }
+        if (trip.getCategory() == null) {
+            errors.add("Category is required");
+        }
+
+        if (!errors.isEmpty()) {
+            throw new ValidationException(400, String.join(", ", errors));
+        }
+
+        return trip;
+    }
+}
+
+

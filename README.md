@@ -1,12 +1,12 @@
-# Medical Clinic API Documentation
+# Trip Planning API Documentation
 
-## Task 1.5.4: API Endpoint Testing Results
+## Task 3: API Endpoint Testing Results
 
-Below are the test results from our doctor.http file:
+Below are the test results from our trip.http file:
 
-### 1. Get All Doctors
+### 1. Get All Trips
 ```http
-GET http://localhost:7070/api/doctors
+GET http://localhost:7070/api/trips
 Accept: application/json
 
 HTTP/1.1 200 OK
@@ -14,323 +14,248 @@ Content-Type: application/json
 [
   {
     "id": 1,
-    "dateOfBirth": "1975-04-12",
-    "name": "Dr. Alice Smith",
-    "yearOfGraduation": 2000,
-    "nameOfClinic": "City Health Clinic",
-    "speciality": "FAMILY_MEDICINE",
-    "appointments": []
+    "startTime": "2024-11-05T09:00:44.268Z",
+    "endTime": "2024-11-05T11:00:44.268Z",
+    "longitude": 12.5683,
+    "latitude": 55.6761,
+    "name": "Copenhagen City Walk",
+    "price": 299.99,
+    "category": "CITY",
+    "guide": {
+      "id": 1,
+      "firstName": "John",
+      "lastName": "Smith",
+      "email": "john.smith@guides.com",
+      "phone": "+45 12345678",
+      "yearsOfExperience": 5
+    }
   },
   {
     "id": 2,
-    "dateOfBirth": "1980-08-05",
-    "name": "Dr. Bob Johnson",
-    "yearOfGraduation": 2005,
-    "nameOfClinic": "Downtown Medical Center",
-    "speciality": "SURGERY",
-    "appointments": []
+    "startTime": "2024-11-06T13:00:44.268Z",
+    "endTime": "2024-11-06T16:00:44.268Z",
+    "longitude": 12.6347,
+    "latitude": 55.6582,
+    "name": "Amager Beach Experience",
+    "price": 399.99,
+    "category": "BEACH",
+    "guide": {
+      "id": 1,
+      "firstName": "John",
+      "lastName": "Smith",
+      "email": "john.smith@guides.com",
+      "phone": "+45 12345678",
+      "yearsOfExperience": 5
+    }
+  },
+  {
+    "id": 3,
+    "startTime": "2024-11-07T08:00:44.268Z",
+    "endTime": "2024-11-07T12:00:44.268Z",
+    "longitude": 12.5693,
+    "latitude": 55.7832,
+    "name": "Dyrehaven Forest Tour",
+    "price": 449.99,
+    "category": "FOREST",
+    "guide": {
+      "id": 2,
+      "firstName": "Sarah",
+      "lastName": "Johnson",
+      "email": "sarah.j@guides.com",
+      "phone": "+45 87654321",
+      "yearsOfExperience": 8
+    }
   },
   {
     "id": 4,
-    "dateOfBirth": "1978-11-15",
-    "name": "Dr. David Park",
-    "yearOfGraduation": 2003,
-    "nameOfClinic": "Hillside Medical Practice",
-    "speciality": "PSYCHIATRY",
-    "appointments": []
-  },
-  {
-    "id": 7,
-    "dateOfBirth": "1979-05-29",
-    "name": "Dr. George Kim",
-    "yearOfGraduation": 2004,
-    "nameOfClinic": "Summit Health Institute",
-    "speciality": "FAMILY_MEDICINE",
-    "appointments": []
+    "startTime": "2024-11-08T10:00:44.268Z",
+    "endTime": "2024-11-08T14:00:44.268Z",
+    "longitude": 12.6298,
+    "latitude": 55.7069,
+    "name": "Øresund Sea Adventure",
+    "price": 599.99,
+    "category": "SEA",
+    "guide": {
+      "id": 2,
+      "firstName": "Sarah",
+      "lastName": "Johnson",
+      "email": "sarah.j@guides.com",
+      "phone": "+45 87654321",
+      "yearsOfExperience": 8
+    }
   }
 ]
 ```
 
-### 2. Get Doctor by ID
+### 2. Get Trip by ID
 ```http
-GET http://localhost:7070/api/doctors/1
+GET http://localhost:7070/api/trips/1
 Accept: application/json
 
 HTTP/1.1 200 OK
 Content-Type: application/json
 {
   "id": 1,
-  "name": "Dr. Alice Smith",
-  "dateOfBirth": "1975-04-12",
-  "yearOfGraduation": 2000,
-  "nameOfClinic": "City Health Clinic",
-  "speciality": "FAMILY_MEDICINE",
-  "appointments": [
-    {
-      "id": 1,
-      "clientName": "John Smith",
-      "date": "2024-11-04",
-      "time": "09:45",
-      "comment": "First visit"
-    }
-  ]
+  "startTime": "2024-11-05T10:00:00.000Z",
+  "endTime": "2024-11-05T12:00:00.000Z",
+  "longitude": 12.5683,
+  "latitude": 55.6761,
+  "name": "Copenhagen City Walk",
+  "price": 299.99,
+  "category": "CITY",
+  "guide": {
+    "id": 1,
+    "firstName": "John",
+    "lastName": "Smith",
+    "email": "john.smith@guides.com",
+    "phone": "+45 12345678",
+    "yearsOfExperience": 5
+  }
 }
 ```
 
-### 3. Get Doctors by Speciality
+### 3. Create New Trip (POST)
 ```http
-GET http://localhost:7070/api/doctors/speciality/SURGERY
-Accept: application/json
-
-HTTP/1.1 200 OK
+POST http://localhost:7070/api/trips
 Content-Type: application/json
-[
-  {
-    "id": 2,
-    "name": "Dr. Bob Johnson",
-    "dateOfBirth": "1980-08-05",
-    "yearOfGraduation": 2005,
-    "nameOfClinic": "Downtown Medical Center",
-    "speciality": "SURGERY"
-  }
-]
-```
-
-### 4. Get Doctors by Birthdate Range
-```http
-GET http://localhost:7070/api/doctors/birthdate/range?from=1975-01-01&to=1979-12-31
-Accept: application/json
-
-HTTP/1.1 200 OK
-Content-Type: application/json
-[
-  {
-    "id": 1,
-    "name": "Dr. Alice Smith",
-    "dateOfBirth": "1975-04-12",
-    "yearOfGraduation": 2000,
-    "nameOfClinic": "City Health Clinic",
-    "speciality": "FAMILY_MEDICINE"
-  }
-]
-```
-
-### 5. Create New Doctor (POST)
-```http
-POST http://localhost:7070/api/doctors
-Content-Type: application/json
+Authorization: Bearer {{jwt_token}}
 
 REQUEST:
 {
-  "name": "Dr. Sophus Olsson",
-  "dateOfBirth": "1980-05-21",
-  "yearOfGraduation": 2008,
-  "nameOfClinic": "Green Valley Hospital",
-  "speciality": "PEDIATRICS"
+  "name": "Copenhagen City Walk",
+  "startTime": "2024-11-05T10:00:00.000Z",
+  "endTime": "2024-11-05T12:00:00.000Z",
+  "longitude": 12.5683,
+  "latitude": 55.6761,
+  "price": 299.99,
+  "category": "CITY"
 }
 
 HTTP/1.1 201 Created
 Content-Type: application/json
 {
-  "id": 3,
-  "name": "Dr. Sophus Olsson",
-  "dateOfBirth": "1980-05-21",
-  "yearOfGraduation": 2008,
-  "nameOfClinic": "Green Valley Hospital",
-  "speciality": "PEDIATRICS",
-  "appointments": []
+  "id": 5,
+  "startTime": "2024-11-05T10:00:00.000Z",
+  "endTime": "2024-11-05T12:00:00.000Z",
+  "longitude": 12.5683,
+  "latitude": 55.6761,
+  "name": "Copenhagen City Walk",
+  "price": 299.99,
+  "category": "CITY"
 }
 ```
 
-### 6. Update Doctor (PUT)
+### 4. Update Trip (PUT)
 ```http
-PUT http://localhost:7070/api/doctors/1
+PUT http://localhost:7070/api/trips/1
 Content-Type: application/json
+Authorization: Bearer {{jwt_token}}
 
 REQUEST:
 {
-  "name": "Dr. Alice Smith",
-  "dateOfBirth": "1975-04-12",
-  "yearOfGraduation": 2001,
-  "nameOfClinic": "City Health Clinic Updated",
-  "speciality": "FAMILY_MEDICINE"
+  "name": "Updated Copenhagen City Walk",
+  "startTime": "2024-11-05T10:00:00.000Z",
+  "endTime": "2024-11-05T12:00:00.000Z",
+  "longitude": 12.5683,
+  "latitude": 55.6761,
+  "price": 349.99,
+  "category": "CITY"
 }
 
 HTTP/1.1 200 OK
 Content-Type: application/json
 {
   "id": 1,
-  "name": "Dr. Alice Smith",
-  "dateOfBirth": "1975-04-12",
-  "yearOfGraduation": 2001,
-  "nameOfClinic": "City Health Clinic Updated",
-  "speciality": "FAMILY_MEDICINE",
-  "appointments": [
-    {
-      "id": 1,
-      "clientName": "John Smith",
-      "date": "2024-11-04",
-      "time": "09:45",
-      "comment": "First visit"
-    }
-  ]
+  "startTime": "2024-11-05T10:00:00.000Z",
+  "endTime": "2024-11-05T12:00:00.000Z",
+  "longitude": 12.5683,
+  "latitude": 55.6761,
+  "name": "Updated Copenhagen City Walk",
+  "price": 349.99,
+  "category": "CITY",
+  "guide": {
+    "id": 1,
+    "firstName": "John",
+    "lastName": "Smith",
+    "email": "john.smith@guides.com",
+    "phone": "+45 12345678",
+    "yearsOfExperience": 5
+  }
 }
 ```
 
-### 7. Delete Doctor
+### 5. Add Guide to Trip
 ```http
-DELETE http://localhost:7070/api/doctors/3
-Authorization: Bearer [admin-token]
+PUT http://localhost:7070/api/trips/1/guides/1
+Authorization: Bearer [user-token]
+
+HTTP/1.1 200 OK
+```
+
+### 6. Delete Trip
+```http
+DELETE http://localhost:7070/api/trips/1
+Authorization: Bearer {{jwt_token}}
 
 HTTP/1.1 204 No Content
 ```
 
 ### Error Test Results
 
-#### 1. Attempt to Create Invalid Doctor
+#### 1. Attempt to Get Non-existent Trip
 ```http
-POST http://localhost:7070/api/doctors
+GET http://localhost:7070/api/trips/999
+Accept: application/json
+
+HTTP/1.1 404 Not Found
 Content-Type: application/json
+{
+  "error": "Trip not found with id: 999 - /api/trips/999",
+  "status": "404 Not Found",
+  "timestamp": "2024-11-04 11:02:06.036"
+}
+```
+
+#### 2. Attempt to Create Invalid Trip
+```http
+POST http://localhost:7070/api/trips
+Content-Type: application/json
+Authorization: Bearer {{jwt_token}}
 
 REQUEST:
 {
   "name": "",
-  "speciality": "INVALID"
+  "price": -100
 }
 
 HTTP/1.1 400 Bad Request
 Content-Type: application/json
 {
-  "status": 400,
-  "message": "Validation failed: Doctor name is required, Invalid speciality",
-  "timestamp": "2024-11-03 14:25:33.127"
+  "error": "Trip name is required, Start time is required, End time is required, Longitude is required, Latitude is required, Valid price is required (must be greater than 0), Category is required",
+  "status": "400 Bad Request",
+  "timestamp": "2024-11-04 11:00:53.924"
 }
 ```
 
-#### 2. Attempt to Delete Non-existent Doctor
-```http
-DELETE http://localhost:7070/api/doctors/999
-Authorization: Bearer [admin-token]
+### Why PUT for Adding a Guide?
 
-HTTP/1.1 404 Not Found
-Content-Type: application/json
-{
-  "status": 404,
-  "message": "Doctor not found with id: 999",
-  "timestamp": "2024-11-03 14:26:45.892"
-}
-```
+The choice to use PUT instead of POST for adding a guide to a trip is based on the idempotent nature of the operation. Idempotency means that making the same request multiple times should have the same effect as making it once.
 
-#### 3. Attempt to Delete Without Admin Rights
-```http
-DELETE http://localhost:7070/api/doctors/1
-Authorization: Bearer [user-token]
+In this case:
+- A trip can only have one guide at a time
+- Adding the same guide to a trip multiple times results in the same end state
+- The operation is more about updating the trip's guide property rather than creating a new resource
 
-HTTP/1.1 403 Forbidden
-Content-Type: application/json
-{
-  "status": 403,
-  "message": "You don't have permission to access this resource. Your role: USER, Required roles: [ADMIN]",
-  "timestamp": "2024-11-03 14:27:15.443"
-}
-```
+This aligns with PUT's semantics of updating an existing resource, whereas POST is typically used for creating new resources or when the operation might have different results if repeated.
 
-[Rest of the README.md remains the same...]
+### Available Endpoints
 
-
-
-## Task 3.2: Purpose of Generics in this Exercise
-
-Generics in this exercise serve several important purposes:
-
-1. **Type Safety**: By using generics in our DAO interface (`IDAO<T, ID>`), we ensure type safety at compile time. This prevents runtime errors that could occur from type mismatches.
-
-2. **Code Reusability**: The generic interface allows us to reuse the same interface structure for different entity types (like Doctor and Appointment) without duplicating code. We can implement the same CRUD operations for different entities while maintaining type safety.
-
-3. **Flexibility**: The generic interface makes our code more flexible and maintainable. We can easily add new entity types that implement the same interface without modifying the existing code.
-
-4. **Clear Contract**: Generics help define a clear contract for implementing classes. Any class implementing the `IDAO` interface must specify what type of entity it works with and what type of ID it uses.
-
-Example of how generics are used in our code:
-```java
-public interface IDAO<T, ID> {
-    T read(ID id) throws ApiException;
-    List<T> readAll() throws ApiException;
-    T create(T t) throws ApiException;
-    T update(ID id, T t) throws ApiException;
-    void delete(ID id) throws ApiException;
-}
-```
-
-## Task 5.4: Differences Between Unit Tests and Integration Tests
-
-There are several key differences between the unit tests performed earlier and the integration tests performed in Task 5:
-
-1. **Scope**:
-    - Unit tests focus on testing individual components in isolation (e.g., testing a single method)
-    - Integration tests in Task 5 test the interaction between multiple components (DAO, database, entities)
-
-2. **Dependencies**:
-    - Unit tests typically mock dependencies
-    - Our integration tests use real database connections and actual JPA operations
-
-3. **Test Environment**:
-    - Unit tests run in memory without external dependencies
-    - Our integration tests require a test database and EntityManagerFactory setup
-
-4. **Complexity**:
-    - Unit tests are simpler and faster to execute
-    - Integration tests require more setup (like @BeforeAll and @BeforeEach methods) and are more complex
-
-5. **Test Data**:
-    - Unit tests usually use simple, mocked data
-    - Our integration tests require proper database records and handle real data persistence
-
-## Task 6: REST Assured Testing Theory
-
-### 6.1 Purpose of REST Assured
-
-REST Assured serves several important purposes in API testing:
-
-1. **Simplified Testing**: It provides a domain-specific language (DSL) for testing HTTP-based REST services.
-2. **Readable Tests**: The syntax is human-readable and follows a given-when-then pattern.
-3. **Comprehensive Validation**: It allows testing of both request and response including headers, body, and status codes.
-4. **Integration Testing**: It enables end-to-end testing of REST APIs in a real-world scenario.
-
-### 6.2 Database Setup for Tests
-
-Our database setup for tests involves:
-
-1. **Test Database Configuration**:
-    - Using TestContainers for isolated test database
-    - Separate configuration in HibernateConfig for test environment
-    - Clean database state between tests
-
-2. **Data Population**:
-    - Using @BeforeEach to populate test data
-    - Cleaning up with @AfterEach
-    - Using transactions to ensure data consistency
-
-3. **Test Isolation**:
-    - Each test runs in isolation
-    - Database state is reset between tests
-    - Using separate test profiles and configurations
-
-### 6.3 Differences in Testing REST Endpoints
-
-Testing REST endpoints differs from regular integration tests in several ways:
-
-1. **HTTP Layer**:
-    - Tests actual HTTP requests and responses
-    - Validates HTTP status codes and headers
-    - Tests API contracts and formats
-
-2. **Client Perspective**:
-    - Tests from external client perspective
-    - Validates API documentation
-    - Ensures proper error handling and responses
-
-3. **End-to-End Testing**:
-    - Tests entire request-response cycle
-    - Includes serialization/deserialization
-    - Validates complete API functionality
+| Method | Endpoint                          | Role        | Description                    |
+|--------|----------------------------------|-------------|--------------------------------|
+| GET    | /api/trips                       | ANYONE      | Get all trips                  |
+| GET    | /api/trips/{id}                  | ANYONE      | Get a specific trip            |
+| POST   | /api/trips                       | USER, ADMIN | Create a new trip              |
+| PUT    | /api/trips/{id}                  | USER, ADMIN | Update an existing trip        |
+| DELETE | /api/trips/{id}                  | ADMIN       | Delete a trip                  |
+| PUT    | /api/trips/{tripId}/guides/{guideId} | USER, ADMIN | Add a guide to a trip      |
+| POST   | /api/trips/populate              | ADMIN       | Populate database with test data|

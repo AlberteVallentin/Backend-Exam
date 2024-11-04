@@ -3,6 +3,7 @@ package dat.config;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dat.exceptions.ApiException;
 import dat.routes.Routes;
+import dat.routes.TripRoutes;
 import dat.security.controllers.AccessController;
 import dat.security.controllers.SecurityController;
 import dat.security.enums.RoleType;
@@ -24,7 +25,7 @@ import org.slf4j.LoggerFactory;
 
 public class ApplicationConfig {
 
-    private static Routes routes = new Routes();
+    private static TripRoutes tripRoutes = new TripRoutes();
     private static ObjectMapper jsonMapper = new Utils().getObjectMapper();
     private static SecurityController securityController = SecurityController.getInstance();
     private static AccessController accessController = new AccessController();
@@ -35,9 +36,11 @@ public class ApplicationConfig {
         config.showJavalinBanner = false;
         config.bundledPlugins.enableRouteOverview("/routes", RoleType.ANYONE);
         config.router.contextPath = "/api"; // base path for all endpoints
-        config.router.apiBuilder(routes.getRoutes());
-        config.router.apiBuilder(SecurityRoutes.getSecuredRoutes());
-        config.router.apiBuilder(SecurityRoutes.getSecurityRoutes());
+
+        config.router.apiBuilder(() -> {
+            config.router.apiBuilder(tripRoutes.getRoutes());
+            config.router.apiBuilder(SecurityRoutes.getSecurityRoutes());
+        });
     }
 
     public static Javalin startServer(int port) {
@@ -71,5 +74,4 @@ public class ApplicationConfig {
         String requestInfo = ctx.req().getMethod() + " " + ctx.req().getRequestURI();
         logger.info("Request {} - {} was handled with status code {}", count++, requestInfo, ctx.status());
     }
-
 }

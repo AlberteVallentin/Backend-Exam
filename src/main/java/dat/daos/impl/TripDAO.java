@@ -103,18 +103,33 @@ public class TripDAO implements IDAO<TripDTO, Integer>, ITripGuideDAO {
         }
     }
 
-    @Override
     public void delete(Integer id) throws ApiException {
         try (EntityManager em = emf.createEntityManager()) {
             em.getTransaction().begin();
-            Trip trip = em.find(Trip.class, id);
-            if (trip == null) {
-                throw new ApiException(404, "Trip not found with id: " + id);
+            try {
+                Trip trip = em.find(Trip.class, id);
+                if (trip == null) {
+                    throw new ApiException(404, "Trip not found with id: " + id);
+                }
+                // Slet guide-tilknytning hvis den findes
+                if (trip.getGuide() != null) {
+                    Guide guide = trip.getGuide();
+                    guide.getTrips().remove(trip);
+                    trip.setGuide(null);
+                    em.merge(guide);
+                }
+
+                // Slet turen
+                em.remove(trip);
+                em.getTransaction().commit();
+                LOGGER.info("Deleted trip with id: {}", id);
+            } catch (Exception e) {
+                if (em.getTransaction().isActive()) {
+                    em.getTransaction().rollback();
+                }
+                throw new ApiException(500, "Error deleting trip: " + e.getMessage());
             }
-            em.remove(trip);
-            em.getTransaction().commit();
-            LOGGER.info("Deleted trip with id: {}", id);
-        } catch (PersistenceException e) {
+        } catch (Exception e) {
             LOGGER.error("Database error during delete operation: {}", e.getMessage());
             throw new ApiException(500, "Database error occurred during delete operation");
         }
