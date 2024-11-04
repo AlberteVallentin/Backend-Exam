@@ -555,3 +555,581 @@ Caused by: org.postgresql.util.PSQLException: ERROR: duplicate key value violate
 2024-11-04 12:31:44 [JettyServerThreadPool-27] INFO  dat.config.ApplicationConfig - Request 1 - GET /api/trips/guides/totalprice was handled with status code 200 OK
 2024-11-04 12:31:49 [JettyServerThreadPool-23] INFO  dat.daos.impl.TripDAO - Retrieved trip with id: 4
 2024-11-04 12:31:49 [JettyServerThreadPool-23] INFO  dat.config.ApplicationConfig - Request 2 - GET /api/trips/4/weight was handled with status code 200 OK
+2024-11-04 12:46:02 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.4.Final
+2024-11-04 12:46:02 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-11-04 12:46:02 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-04 12:46:02 [main] INFO  o.t.utility.ImageNameSubstitutor - Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2024-11-04 12:46:02 [main] INFO  o.t.d.DockerClientProviderStrategy - Loaded org.testcontainers.dockerclient.UnixSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2024-11-04 12:46:03 [main] INFO  o.t.d.DockerClientProviderStrategy - Found Docker environment with local Unix socket (unix:///var/run/docker.sock)
+2024-11-04 12:46:03 [main] INFO  o.testcontainers.DockerClientFactory - Docker host IP address is localhost
+2024-11-04 12:46:03 [main] INFO  o.testcontainers.DockerClientFactory - Connected to docker: 
+  Server Version: 25.0.3
+  API Version: 1.44
+  Operating System: Docker Desktop
+  Total Memory: 7840 MB
+2024-11-04 12:46:03 [main] INFO  tc.testcontainers/ryuk:0.4.0 - Creating container for image: testcontainers/ryuk:0.4.0
+2024-11-04 12:46:03 [main] INFO  o.t.utility.RegistryAuthLocator - Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2024-11-04 12:46:03 [main] INFO  tc.testcontainers/ryuk:0.4.0 - Container testcontainers/ryuk:0.4.0 is starting: f7d6cd8626557f0647dac33595e5817bd9a5c29ae9c0f24b1b453ea0304264ab
+2024-11-04 12:46:03 [main] INFO  tc.testcontainers/ryuk:0.4.0 - Container testcontainers/ryuk:0.4.0 started in PT0.525843S
+2024-11-04 12:46:03 [main] INFO  o.t.utility.RyukResourceReaper - Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2024-11-04 12:46:03 [main] INFO  o.testcontainers.DockerClientFactory - Checking the system...
+2024-11-04 12:46:03 [main] INFO  o.testcontainers.DockerClientFactory - ✔︎ Docker server version should be at least 1.6.0
+2024-11-04 12:46:03 [main] INFO  tc.postgres:15.3-alpine3.18 - Creating container for image: postgres:15.3-alpine3.18
+2024-11-04 12:46:03 [main] INFO  tc.postgres:15.3-alpine3.18 - Container postgres:15.3-alpine3.18 is starting: a19197697ddc251fd00c5e944b0de046564a295c64daabf14acc46892d287850
+2024-11-04 12:46:04 [main] INFO  tc.postgres:15.3-alpine3.18 - Container postgres:15.3-alpine3.18 started in PT0.91885S
+2024-11-04 12:46:04 [main] INFO  tc.postgres:15.3-alpine3.18 - Container is started (JDBC URL: jdbc:postgresql://localhost:58788/test?loggerLevel=OFF)
+2024-11-04 12:46:04 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.testcontainers.jdbc.ConnectionWrapper@c2e3264
+2024-11-04 12:46:04 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-04 12:46:04 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-11-04 12:46:05 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:46:05 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - relation "appointments" does not exist, skipping
+2024-11-04 12:46:05 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:46:05 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - relation "trips" does not exist, skipping
+2024-11-04 12:46:05 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:46:05 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - relation "users" does not exist, skipping
+2024-11-04 12:46:05 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:46:05 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "appointments" does not exist, skipping
+2024-11-04 12:46:05 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:46:05 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "doctors" does not exist, skipping
+2024-11-04 12:46:05 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:46:05 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "guides" does not exist, skipping
+2024-11-04 12:46:05 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:46:05 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "roles" does not exist, skipping
+2024-11-04 12:46:05 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:46:05 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "trips" does not exist, skipping
+2024-11-04 12:46:05 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:46:05 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "users" does not exist, skipping
+2024-11-04 12:46:05 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2024-11-04 12:46:05 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection org.testcontainers.jdbc.ConnectionWrapper@3de88f64
+2024-11-04 12:46:05 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2024-11-04 12:46:05 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-11-04 12:46:05 [main] INFO  io.javalin.Javalin - Starting Javalin ...
+2024-11-04 12:46:05 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.23; built: 2024-08-14T01:40:17.906Z; git: 6fcf5ccaebd7ca13a0cb96c96adca699a24080a0; jvm 17.0.10+7-LTS
+2024-11-04 12:46:05 [main] INFO  o.e.j.s.s.DefaultSessionIdManager - Session workerName=node0
+2024-11-04 12:46:05 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@5cc669d{/api,null,AVAILABLE}
+2024-11-04 12:46:05 [main] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@5cdc8499{HTTP/1.1, (http/1.1)}{0.0.0.0:7070}
+2024-11-04 12:46:05 [main] INFO  org.eclipse.jetty.server.Server - Started Server@5810772a{STARTING}[11.0.23,sto=0] @3064ms
+2024-11-04 12:46:05 [main] INFO  io.javalin.Javalin - Javalin started in 56ms \o/
+2024-11-04 12:46:05 [main] INFO  io.javalin.Javalin - Listening on http://localhost:7070/api
+2024-11-04 12:46:05 [main] INFO  io.javalin.Javalin - You are running Javalin 6.3.0 (released August 22, 2024).
+2024-11-04 12:46:06 [JettyServerThreadPool-40] INFO  dat.daos.impl.TripDAO - Retrieved 4 trips
+2024-11-04 12:46:06 [JettyServerThreadPool-40] INFO  dat.config.ApplicationConfig - Request 1 - GET /api/trips was handled with status code 200 OK
+2024-11-04 12:46:06 [main] INFO  io.javalin.Javalin - Stopping Javalin ...
+2024-11-04 12:46:06 [main] INFO  org.eclipse.jetty.server.Server - Stopped Server@5810772a{STOPPING}[11.0.23,sto=0]
+2024-11-04 12:46:06 [main] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@5cdc8499{HTTP/1.1, (http/1.1)}{0.0.0.0:7070}
+2024-11-04 12:46:06 [main] INFO  o.e.j.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@5cc669d{/api,null,STOPPED}
+2024-11-04 12:46:06 [main] INFO  io.javalin.Javalin - Javalin has stopped
+2024-11-04 12:47:38 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.4.Final
+2024-11-04 12:47:38 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-11-04 12:47:38 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-04 12:47:38 [main] INFO  o.t.utility.ImageNameSubstitutor - Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2024-11-04 12:47:39 [main] INFO  o.t.d.DockerClientProviderStrategy - Loaded org.testcontainers.dockerclient.UnixSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2024-11-04 12:47:39 [main] INFO  o.t.d.DockerClientProviderStrategy - Found Docker environment with local Unix socket (unix:///var/run/docker.sock)
+2024-11-04 12:47:39 [main] INFO  o.testcontainers.DockerClientFactory - Docker host IP address is localhost
+2024-11-04 12:47:39 [main] INFO  o.testcontainers.DockerClientFactory - Connected to docker: 
+  Server Version: 25.0.3
+  API Version: 1.44
+  Operating System: Docker Desktop
+  Total Memory: 7840 MB
+2024-11-04 12:47:39 [main] INFO  tc.testcontainers/ryuk:0.4.0 - Creating container for image: testcontainers/ryuk:0.4.0
+2024-11-04 12:47:39 [main] INFO  o.t.utility.RegistryAuthLocator - Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2024-11-04 12:47:39 [main] INFO  tc.testcontainers/ryuk:0.4.0 - Container testcontainers/ryuk:0.4.0 is starting: ec9fee842ce02460d33200108921fca55d54e80eb42701254ee88351015573e0
+2024-11-04 12:47:39 [main] INFO  tc.testcontainers/ryuk:0.4.0 - Container testcontainers/ryuk:0.4.0 started in PT0.347462S
+2024-11-04 12:47:39 [main] INFO  o.t.utility.RyukResourceReaper - Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2024-11-04 12:47:39 [main] INFO  o.testcontainers.DockerClientFactory - Checking the system...
+2024-11-04 12:47:39 [main] INFO  o.testcontainers.DockerClientFactory - ✔︎ Docker server version should be at least 1.6.0
+2024-11-04 12:47:39 [main] INFO  tc.postgres:15.3-alpine3.18 - Creating container for image: postgres:15.3-alpine3.18
+2024-11-04 12:47:39 [main] INFO  tc.postgres:15.3-alpine3.18 - Container postgres:15.3-alpine3.18 is starting: aab9ccb3ddbfb1144253273003cb7cdd645486b3a5df15bdbfbd29f4e15e13eb
+2024-11-04 12:47:40 [main] INFO  tc.postgres:15.3-alpine3.18 - Container postgres:15.3-alpine3.18 started in PT0.837982S
+2024-11-04 12:47:40 [main] INFO  tc.postgres:15.3-alpine3.18 - Container is started (JDBC URL: jdbc:postgresql://localhost:58851/test?loggerLevel=OFF)
+2024-11-04 12:47:40 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.testcontainers.jdbc.ConnectionWrapper@37d871c2
+2024-11-04 12:47:40 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-04 12:47:40 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-11-04 12:47:40 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:47:40 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - relation "appointments" does not exist, skipping
+2024-11-04 12:47:40 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:47:40 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - relation "trips" does not exist, skipping
+2024-11-04 12:47:40 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:47:40 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - relation "users" does not exist, skipping
+2024-11-04 12:47:40 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:47:40 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "appointments" does not exist, skipping
+2024-11-04 12:47:40 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:47:40 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "doctors" does not exist, skipping
+2024-11-04 12:47:40 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:47:40 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "guides" does not exist, skipping
+2024-11-04 12:47:40 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:47:40 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "roles" does not exist, skipping
+2024-11-04 12:47:40 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:47:40 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "trips" does not exist, skipping
+2024-11-04 12:47:40 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:47:40 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "users" does not exist, skipping
+2024-11-04 12:47:41 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2024-11-04 12:47:41 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection org.testcontainers.jdbc.ConnectionWrapper@2bb3f39e
+2024-11-04 12:47:41 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2024-11-04 12:47:41 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-11-04 12:47:41 [main] INFO  io.javalin.Javalin - Starting Javalin ...
+2024-11-04 12:47:41 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.23; built: 2024-08-14T01:40:17.906Z; git: 6fcf5ccaebd7ca13a0cb96c96adca699a24080a0; jvm 17.0.10+7-LTS
+2024-11-04 12:47:41 [main] INFO  o.e.j.s.s.DefaultSessionIdManager - Session workerName=node0
+2024-11-04 12:47:41 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@66589252{/api,null,AVAILABLE}
+2024-11-04 12:47:41 [main] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@8f589d7{HTTP/1.1, (http/1.1)}{0.0.0.0:7070}
+2024-11-04 12:47:41 [main] INFO  org.eclipse.jetty.server.Server - Started Server@7bdf94f2{STARTING}[11.0.23,sto=0] @2800ms
+2024-11-04 12:47:41 [main] INFO  io.javalin.Javalin - Javalin started in 58ms \o/
+2024-11-04 12:47:41 [main] INFO  io.javalin.Javalin - Listening on http://localhost:7070/api
+2024-11-04 12:47:41 [main] INFO  io.javalin.Javalin - You are running Javalin 6.3.0 (released August 22, 2024).
+2024-11-04 12:47:42 [JettyServerThreadPool-40] INFO  dat.daos.impl.TripDAO - Retrieved 4 trips
+2024-11-04 12:47:42 [JettyServerThreadPool-40] INFO  dat.config.ApplicationConfig - Request 1 - GET /api/trips was handled with status code 200 OK
+2024-11-04 12:47:42 [main] INFO  io.javalin.Javalin - Stopping Javalin ...
+2024-11-04 12:47:42 [main] INFO  org.eclipse.jetty.server.Server - Stopped Server@7bdf94f2{STOPPING}[11.0.23,sto=0]
+2024-11-04 12:47:42 [main] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@8f589d7{HTTP/1.1, (http/1.1)}{0.0.0.0:7070}
+2024-11-04 12:47:42 [main] INFO  o.e.j.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@66589252{/api,null,STOPPED}
+2024-11-04 12:47:42 [main] INFO  io.javalin.Javalin - Javalin has stopped
+2024-11-04 12:48:38 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.4.Final
+2024-11-04 12:48:38 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-11-04 12:48:38 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-04 12:48:38 [main] INFO  o.t.utility.ImageNameSubstitutor - Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2024-11-04 12:48:38 [main] INFO  o.t.d.DockerClientProviderStrategy - Loaded org.testcontainers.dockerclient.UnixSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2024-11-04 12:48:38 [main] INFO  o.t.d.DockerClientProviderStrategy - Found Docker environment with local Unix socket (unix:///var/run/docker.sock)
+2024-11-04 12:48:38 [main] INFO  o.testcontainers.DockerClientFactory - Docker host IP address is localhost
+2024-11-04 12:48:38 [main] INFO  o.testcontainers.DockerClientFactory - Connected to docker: 
+  Server Version: 25.0.3
+  API Version: 1.44
+  Operating System: Docker Desktop
+  Total Memory: 7840 MB
+2024-11-04 12:48:38 [main] INFO  tc.testcontainers/ryuk:0.4.0 - Creating container for image: testcontainers/ryuk:0.4.0
+2024-11-04 12:48:39 [main] INFO  o.t.utility.RegistryAuthLocator - Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2024-11-04 12:48:39 [main] INFO  tc.testcontainers/ryuk:0.4.0 - Container testcontainers/ryuk:0.4.0 is starting: 0baf14084376c8b0efb9046b4ad089e4e739b57a50dacf74ffd2db020441d812
+2024-11-04 12:48:39 [main] INFO  tc.testcontainers/ryuk:0.4.0 - Container testcontainers/ryuk:0.4.0 started in PT0.358597S
+2024-11-04 12:48:39 [main] INFO  o.t.utility.RyukResourceReaper - Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2024-11-04 12:48:39 [main] INFO  o.testcontainers.DockerClientFactory - Checking the system...
+2024-11-04 12:48:39 [main] INFO  o.testcontainers.DockerClientFactory - ✔︎ Docker server version should be at least 1.6.0
+2024-11-04 12:48:39 [main] INFO  tc.postgres:15.3-alpine3.18 - Creating container for image: postgres:15.3-alpine3.18
+2024-11-04 12:48:39 [main] INFO  tc.postgres:15.3-alpine3.18 - Container postgres:15.3-alpine3.18 is starting: f86cc9bbbca978f1025c4e3359fc053d0ef9c9704a299d850d9940087aa00802
+2024-11-04 12:48:40 [main] INFO  tc.postgres:15.3-alpine3.18 - Container postgres:15.3-alpine3.18 started in PT0.758486S
+2024-11-04 12:48:40 [main] INFO  tc.postgres:15.3-alpine3.18 - Container is started (JDBC URL: jdbc:postgresql://localhost:58906/test?loggerLevel=OFF)
+2024-11-04 12:48:40 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.testcontainers.jdbc.ConnectionWrapper@52d6cd34
+2024-11-04 12:48:40 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-04 12:48:40 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-11-04 12:48:40 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:48:40 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - relation "appointments" does not exist, skipping
+2024-11-04 12:48:40 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:48:40 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - relation "trips" does not exist, skipping
+2024-11-04 12:48:40 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:48:40 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - relation "users" does not exist, skipping
+2024-11-04 12:48:40 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:48:40 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "appointments" does not exist, skipping
+2024-11-04 12:48:40 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:48:40 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "doctors" does not exist, skipping
+2024-11-04 12:48:40 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:48:40 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "guides" does not exist, skipping
+2024-11-04 12:48:40 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:48:40 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "roles" does not exist, skipping
+2024-11-04 12:48:40 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:48:40 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "trips" does not exist, skipping
+2024-11-04 12:48:40 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:48:40 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "users" does not exist, skipping
+2024-11-04 12:48:40 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2024-11-04 12:48:40 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection org.testcontainers.jdbc.ConnectionWrapper@3fd5d679
+2024-11-04 12:48:40 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2024-11-04 12:48:40 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-11-04 12:48:40 [main] INFO  io.javalin.Javalin - Starting Javalin ...
+2024-11-04 12:48:40 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.23; built: 2024-08-14T01:40:17.906Z; git: 6fcf5ccaebd7ca13a0cb96c96adca699a24080a0; jvm 17.0.10+7-LTS
+2024-11-04 12:48:41 [main] INFO  o.e.j.s.s.DefaultSessionIdManager - Session workerName=node0
+2024-11-04 12:48:41 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@66589252{/api,null,AVAILABLE}
+2024-11-04 12:48:41 [main] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@8f589d7{HTTP/1.1, (http/1.1)}{0.0.0.0:7070}
+2024-11-04 12:48:41 [main] INFO  org.eclipse.jetty.server.Server - Started Server@7bdf94f2{STARTING}[11.0.23,sto=0] @2708ms
+2024-11-04 12:48:41 [main] INFO  io.javalin.Javalin - Javalin started in 54ms \o/
+2024-11-04 12:48:41 [main] INFO  io.javalin.Javalin - Listening on http://localhost:7070/api
+2024-11-04 12:48:41 [main] INFO  io.javalin.Javalin - You are running Javalin 6.3.0 (released August 22, 2024).
+2024-11-04 12:48:41 [JettyServerThreadPool-40] INFO  dat.daos.impl.TripDAO - Retrieved trip with id: 1
+2024-11-04 12:48:42 [JettyServerThreadPool-40] INFO  dat.config.ApplicationConfig - Request 1 - GET /api/trips/1 was handled with status code 200 OK
+2024-11-04 12:48:42 [main] INFO  io.javalin.Javalin - Stopping Javalin ...
+2024-11-04 12:48:42 [main] INFO  org.eclipse.jetty.server.Server - Stopped Server@7bdf94f2{STOPPING}[11.0.23,sto=0]
+2024-11-04 12:48:42 [main] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@8f589d7{HTTP/1.1, (http/1.1)}{0.0.0.0:7070}
+2024-11-04 12:48:42 [main] INFO  o.e.j.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@66589252{/api,null,STOPPED}
+2024-11-04 12:48:42 [main] INFO  io.javalin.Javalin - Javalin has stopped
+2024-11-04 12:48:54 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.4.Final
+2024-11-04 12:48:54 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-11-04 12:48:54 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-04 12:48:54 [main] INFO  o.t.utility.ImageNameSubstitutor - Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2024-11-04 12:48:54 [main] INFO  o.t.d.DockerClientProviderStrategy - Loaded org.testcontainers.dockerclient.UnixSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2024-11-04 12:48:54 [main] INFO  o.t.d.DockerClientProviderStrategy - Found Docker environment with local Unix socket (unix:///var/run/docker.sock)
+2024-11-04 12:48:54 [main] INFO  o.testcontainers.DockerClientFactory - Docker host IP address is localhost
+2024-11-04 12:48:54 [main] INFO  o.testcontainers.DockerClientFactory - Connected to docker: 
+  Server Version: 25.0.3
+  API Version: 1.44
+  Operating System: Docker Desktop
+  Total Memory: 7840 MB
+2024-11-04 12:48:54 [main] INFO  tc.testcontainers/ryuk:0.4.0 - Creating container for image: testcontainers/ryuk:0.4.0
+2024-11-04 12:48:54 [main] INFO  o.t.utility.RegistryAuthLocator - Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2024-11-04 12:48:54 [main] INFO  tc.testcontainers/ryuk:0.4.0 - Container testcontainers/ryuk:0.4.0 is starting: 4902ac181db9b5dfb7c1142179bef827686cc40287f63957de25bf56adb3d23b
+2024-11-04 12:48:54 [main] INFO  tc.testcontainers/ryuk:0.4.0 - Container testcontainers/ryuk:0.4.0 started in PT0.318824S
+2024-11-04 12:48:54 [main] INFO  o.t.utility.RyukResourceReaper - Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2024-11-04 12:48:54 [main] INFO  o.testcontainers.DockerClientFactory - Checking the system...
+2024-11-04 12:48:54 [main] INFO  o.testcontainers.DockerClientFactory - ✔︎ Docker server version should be at least 1.6.0
+2024-11-04 12:48:54 [main] INFO  tc.postgres:15.3-alpine3.18 - Creating container for image: postgres:15.3-alpine3.18
+2024-11-04 12:48:54 [main] INFO  tc.postgres:15.3-alpine3.18 - Container postgres:15.3-alpine3.18 is starting: 8e67b398a6fcd5c4e0929ba77a1209bbe89848494f93389e07c05b48fde8c1da
+2024-11-04 12:48:55 [main] INFO  tc.postgres:15.3-alpine3.18 - Container postgres:15.3-alpine3.18 started in PT0.734559S
+2024-11-04 12:48:55 [main] INFO  tc.postgres:15.3-alpine3.18 - Container is started (JDBC URL: jdbc:postgresql://localhost:58942/test?loggerLevel=OFF)
+2024-11-04 12:48:55 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.testcontainers.jdbc.ConnectionWrapper@52d6cd34
+2024-11-04 12:48:55 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-04 12:48:55 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-11-04 12:48:56 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:48:56 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - relation "appointments" does not exist, skipping
+2024-11-04 12:48:56 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:48:56 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - relation "trips" does not exist, skipping
+2024-11-04 12:48:56 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:48:56 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - relation "users" does not exist, skipping
+2024-11-04 12:48:56 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:48:56 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "appointments" does not exist, skipping
+2024-11-04 12:48:56 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:48:56 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "doctors" does not exist, skipping
+2024-11-04 12:48:56 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:48:56 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "guides" does not exist, skipping
+2024-11-04 12:48:56 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:48:56 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "roles" does not exist, skipping
+2024-11-04 12:48:56 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:48:56 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "trips" does not exist, skipping
+2024-11-04 12:48:56 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:48:56 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "users" does not exist, skipping
+2024-11-04 12:48:56 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2024-11-04 12:48:56 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection org.testcontainers.jdbc.ConnectionWrapper@3fd5d679
+2024-11-04 12:48:56 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2024-11-04 12:48:56 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-11-04 12:48:56 [main] INFO  io.javalin.Javalin - Starting Javalin ...
+2024-11-04 12:48:56 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.23; built: 2024-08-14T01:40:17.906Z; git: 6fcf5ccaebd7ca13a0cb96c96adca699a24080a0; jvm 17.0.10+7-LTS
+2024-11-04 12:48:56 [main] INFO  o.e.j.s.s.DefaultSessionIdManager - Session workerName=node0
+2024-11-04 12:48:56 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@66589252{/api,null,AVAILABLE}
+2024-11-04 12:48:56 [main] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@8f589d7{HTTP/1.1, (http/1.1)}{0.0.0.0:7070}
+2024-11-04 12:48:56 [main] INFO  org.eclipse.jetty.server.Server - Started Server@7bdf94f2{STARTING}[11.0.23,sto=0] @2588ms
+2024-11-04 12:48:56 [main] INFO  io.javalin.Javalin - Javalin started in 53ms \o/
+2024-11-04 12:48:56 [main] INFO  io.javalin.Javalin - Listening on http://localhost:7070/api
+2024-11-04 12:48:56 [main] INFO  io.javalin.Javalin - You are running Javalin 6.3.0 (released August 22, 2024).
+2024-11-04 12:48:57 [JettyServerThreadPool-40] INFO  dat.daos.impl.TripDAO - Created trip with id: 5
+2024-11-04 12:48:57 [JettyServerThreadPool-40] INFO  dat.config.ApplicationConfig - Request 1 - POST /api/trips was handled with status code 201 Created
+2024-11-04 12:48:57 [main] INFO  io.javalin.Javalin - Stopping Javalin ...
+2024-11-04 12:48:57 [main] INFO  org.eclipse.jetty.server.Server - Stopped Server@7bdf94f2{STOPPING}[11.0.23,sto=0]
+2024-11-04 12:48:57 [main] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@8f589d7{HTTP/1.1, (http/1.1)}{0.0.0.0:7070}
+2024-11-04 12:48:57 [main] INFO  o.e.j.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@66589252{/api,null,STOPPED}
+2024-11-04 12:48:57 [main] INFO  io.javalin.Javalin - Javalin has stopped
+2024-11-04 12:49:02 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.4.Final
+2024-11-04 12:49:02 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-11-04 12:49:02 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-04 12:49:02 [main] INFO  o.t.utility.ImageNameSubstitutor - Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2024-11-04 12:49:02 [main] INFO  o.t.d.DockerClientProviderStrategy - Loaded org.testcontainers.dockerclient.UnixSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2024-11-04 12:49:02 [main] INFO  o.t.d.DockerClientProviderStrategy - Found Docker environment with local Unix socket (unix:///var/run/docker.sock)
+2024-11-04 12:49:02 [main] INFO  o.testcontainers.DockerClientFactory - Docker host IP address is localhost
+2024-11-04 12:49:02 [main] INFO  o.testcontainers.DockerClientFactory - Connected to docker: 
+  Server Version: 25.0.3
+  API Version: 1.44
+  Operating System: Docker Desktop
+  Total Memory: 7840 MB
+2024-11-04 12:49:02 [main] INFO  tc.testcontainers/ryuk:0.4.0 - Creating container for image: testcontainers/ryuk:0.4.0
+2024-11-04 12:49:03 [main] INFO  o.t.utility.RegistryAuthLocator - Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2024-11-04 12:49:03 [main] INFO  tc.testcontainers/ryuk:0.4.0 - Container testcontainers/ryuk:0.4.0 is starting: 8ee27a631fbf907f6394b411149c0aa00233d5ee1f859822addee2367c4a2ed1
+2024-11-04 12:49:03 [main] INFO  tc.testcontainers/ryuk:0.4.0 - Container testcontainers/ryuk:0.4.0 started in PT0.275623S
+2024-11-04 12:49:03 [main] INFO  o.t.utility.RyukResourceReaper - Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2024-11-04 12:49:03 [main] INFO  o.testcontainers.DockerClientFactory - Checking the system...
+2024-11-04 12:49:03 [main] INFO  o.testcontainers.DockerClientFactory - ✔︎ Docker server version should be at least 1.6.0
+2024-11-04 12:49:03 [main] INFO  tc.postgres:15.3-alpine3.18 - Creating container for image: postgres:15.3-alpine3.18
+2024-11-04 12:49:03 [main] INFO  tc.postgres:15.3-alpine3.18 - Container postgres:15.3-alpine3.18 is starting: 1b0dfd30a5dbc3544d9b30053ce20c3e9846ff6e8c15ab2fd21d8ba72e10be58
+2024-11-04 12:49:04 [main] INFO  tc.postgres:15.3-alpine3.18 - Container postgres:15.3-alpine3.18 started in PT0.809661S
+2024-11-04 12:49:04 [main] INFO  tc.postgres:15.3-alpine3.18 - Container is started (JDBC URL: jdbc:postgresql://localhost:58972/test?loggerLevel=OFF)
+2024-11-04 12:49:04 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.testcontainers.jdbc.ConnectionWrapper@65753040
+2024-11-04 12:49:04 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-04 12:49:04 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-11-04 12:49:04 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:49:04 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - relation "appointments" does not exist, skipping
+2024-11-04 12:49:04 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:49:04 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - relation "trips" does not exist, skipping
+2024-11-04 12:49:04 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:49:04 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - relation "users" does not exist, skipping
+2024-11-04 12:49:04 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:49:04 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "appointments" does not exist, skipping
+2024-11-04 12:49:04 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:49:04 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "doctors" does not exist, skipping
+2024-11-04 12:49:04 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:49:04 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "guides" does not exist, skipping
+2024-11-04 12:49:04 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:49:04 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "roles" does not exist, skipping
+2024-11-04 12:49:04 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:49:04 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "trips" does not exist, skipping
+2024-11-04 12:49:04 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:49:04 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "users" does not exist, skipping
+2024-11-04 12:49:04 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2024-11-04 12:49:04 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection org.testcontainers.jdbc.ConnectionWrapper@5cf2f5d6
+2024-11-04 12:49:04 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2024-11-04 12:49:04 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-11-04 12:49:04 [main] INFO  io.javalin.Javalin - Starting Javalin ...
+2024-11-04 12:49:04 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.23; built: 2024-08-14T01:40:17.906Z; git: 6fcf5ccaebd7ca13a0cb96c96adca699a24080a0; jvm 17.0.10+7-LTS
+2024-11-04 12:49:05 [main] INFO  o.e.j.s.s.DefaultSessionIdManager - Session workerName=node0
+2024-11-04 12:49:05 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@66589252{/api,null,AVAILABLE}
+2024-11-04 12:49:05 [main] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@8f589d7{HTTP/1.1, (http/1.1)}{0.0.0.0:7070}
+2024-11-04 12:49:05 [main] INFO  org.eclipse.jetty.server.Server - Started Server@7bdf94f2{STARTING}[11.0.23,sto=0] @2748ms
+2024-11-04 12:49:05 [main] INFO  io.javalin.Javalin - Javalin started in 56ms \o/
+2024-11-04 12:49:05 [main] INFO  io.javalin.Javalin - Listening on http://localhost:7070/api
+2024-11-04 12:49:05 [main] INFO  io.javalin.Javalin - You are running Javalin 6.3.0 (released August 22, 2024).
+2024-11-04 12:49:06 [JettyServerThreadPool-40] INFO  dat.daos.impl.TripDAO - Updated trip with id: 1
+2024-11-04 12:49:06 [JettyServerThreadPool-40] INFO  dat.config.ApplicationConfig - Request 1 - PUT /api/trips/1 was handled with status code 200 OK
+2024-11-04 12:49:06 [main] INFO  io.javalin.Javalin - Stopping Javalin ...
+2024-11-04 12:49:06 [main] INFO  org.eclipse.jetty.server.Server - Stopped Server@7bdf94f2{STOPPING}[11.0.23,sto=0]
+2024-11-04 12:49:06 [main] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@8f589d7{HTTP/1.1, (http/1.1)}{0.0.0.0:7070}
+2024-11-04 12:49:06 [main] INFO  o.e.j.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@66589252{/api,null,STOPPED}
+2024-11-04 12:49:06 [main] INFO  io.javalin.Javalin - Javalin has stopped
+2024-11-04 12:49:10 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.4.Final
+2024-11-04 12:49:10 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-11-04 12:49:10 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-04 12:49:10 [main] INFO  o.t.utility.ImageNameSubstitutor - Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2024-11-04 12:49:10 [main] INFO  o.t.d.DockerClientProviderStrategy - Loaded org.testcontainers.dockerclient.UnixSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2024-11-04 12:49:10 [main] INFO  o.t.d.DockerClientProviderStrategy - Found Docker environment with local Unix socket (unix:///var/run/docker.sock)
+2024-11-04 12:49:10 [main] INFO  o.testcontainers.DockerClientFactory - Docker host IP address is localhost
+2024-11-04 12:49:10 [main] INFO  o.testcontainers.DockerClientFactory - Connected to docker: 
+  Server Version: 25.0.3
+  API Version: 1.44
+  Operating System: Docker Desktop
+  Total Memory: 7840 MB
+2024-11-04 12:49:10 [main] INFO  tc.testcontainers/ryuk:0.4.0 - Creating container for image: testcontainers/ryuk:0.4.0
+2024-11-04 12:49:11 [main] INFO  o.t.utility.RegistryAuthLocator - Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2024-11-04 12:49:11 [main] INFO  tc.testcontainers/ryuk:0.4.0 - Container testcontainers/ryuk:0.4.0 is starting: b69e852e8a8c2f55df45b5d6a6b5acf36b91d9a1b5fe7cda0ded4ffa03f65b65
+2024-11-04 12:49:11 [main] INFO  tc.testcontainers/ryuk:0.4.0 - Container testcontainers/ryuk:0.4.0 started in PT0.314315S
+2024-11-04 12:49:11 [main] INFO  o.t.utility.RyukResourceReaper - Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2024-11-04 12:49:11 [main] INFO  o.testcontainers.DockerClientFactory - Checking the system...
+2024-11-04 12:49:11 [main] INFO  o.testcontainers.DockerClientFactory - ✔︎ Docker server version should be at least 1.6.0
+2024-11-04 12:49:11 [main] INFO  tc.postgres:15.3-alpine3.18 - Creating container for image: postgres:15.3-alpine3.18
+2024-11-04 12:49:11 [main] INFO  tc.postgres:15.3-alpine3.18 - Container postgres:15.3-alpine3.18 is starting: 381e9f86104dcd34b44694d30b6d7cdd8c56f51d4ada6dcf1920eb6624323996
+2024-11-04 12:49:12 [main] INFO  tc.postgres:15.3-alpine3.18 - Container postgres:15.3-alpine3.18 started in PT0.765748S
+2024-11-04 12:49:12 [main] INFO  tc.postgres:15.3-alpine3.18 - Container is started (JDBC URL: jdbc:postgresql://localhost:59003/test?loggerLevel=OFF)
+2024-11-04 12:49:12 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.testcontainers.jdbc.ConnectionWrapper@52d6cd34
+2024-11-04 12:49:12 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-04 12:49:12 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-11-04 12:49:12 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:49:12 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - relation "appointments" does not exist, skipping
+2024-11-04 12:49:12 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:49:12 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - relation "trips" does not exist, skipping
+2024-11-04 12:49:12 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:49:12 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - relation "users" does not exist, skipping
+2024-11-04 12:49:12 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:49:12 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "appointments" does not exist, skipping
+2024-11-04 12:49:12 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:49:12 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "doctors" does not exist, skipping
+2024-11-04 12:49:12 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:49:12 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "guides" does not exist, skipping
+2024-11-04 12:49:12 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:49:12 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "roles" does not exist, skipping
+2024-11-04 12:49:12 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:49:12 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "trips" does not exist, skipping
+2024-11-04 12:49:12 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:49:12 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "users" does not exist, skipping
+2024-11-04 12:49:12 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2024-11-04 12:49:12 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection org.testcontainers.jdbc.ConnectionWrapper@3fd5d679
+2024-11-04 12:49:12 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2024-11-04 12:49:12 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-11-04 12:49:13 [main] INFO  io.javalin.Javalin - Starting Javalin ...
+2024-11-04 12:49:13 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.23; built: 2024-08-14T01:40:17.906Z; git: 6fcf5ccaebd7ca13a0cb96c96adca699a24080a0; jvm 17.0.10+7-LTS
+2024-11-04 12:49:13 [main] INFO  o.e.j.s.s.DefaultSessionIdManager - Session workerName=node0
+2024-11-04 12:49:13 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@66589252{/api,null,AVAILABLE}
+2024-11-04 12:49:13 [main] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@8f589d7{HTTP/1.1, (http/1.1)}{0.0.0.0:7070}
+2024-11-04 12:49:13 [main] INFO  org.eclipse.jetty.server.Server - Started Server@7bdf94f2{STARTING}[11.0.23,sto=0] @2632ms
+2024-11-04 12:49:13 [main] INFO  io.javalin.Javalin - Javalin started in 54ms \o/
+2024-11-04 12:49:13 [main] INFO  io.javalin.Javalin - Listening on http://localhost:7070/api
+2024-11-04 12:49:13 [main] INFO  io.javalin.Javalin - You are running Javalin 6.3.0 (released August 22, 2024).
+2024-11-04 12:49:13 [JettyServerThreadPool-40] INFO  dat.daos.impl.TripDAO - Deleted trip with id: 1
+2024-11-04 12:49:13 [JettyServerThreadPool-40] INFO  dat.config.ApplicationConfig - Request 1 - DELETE /api/trips/1 was handled with status code 204 No Content
+2024-11-04 12:49:13 [JettyServerThreadPool-35] ERROR dat.controllers.ExceptionController - API Error at /api/trips/1: Trip not found with id: 1
+2024-11-04 12:49:13 [JettyServerThreadPool-35] INFO  dat.config.ApplicationConfig - Request 2 - GET /api/trips/1 was handled with status code 404 Not Found
+2024-11-04 12:49:13 [main] INFO  io.javalin.Javalin - Stopping Javalin ...
+2024-11-04 12:49:13 [main] INFO  org.eclipse.jetty.server.Server - Stopped Server@7bdf94f2{STOPPING}[11.0.23,sto=0]
+2024-11-04 12:49:13 [main] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@8f589d7{HTTP/1.1, (http/1.1)}{0.0.0.0:7070}
+2024-11-04 12:49:13 [main] INFO  o.e.j.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@66589252{/api,null,STOPPED}
+2024-11-04 12:49:13 [main] INFO  io.javalin.Javalin - Javalin has stopped
+2024-11-04 12:49:18 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.4.Final
+2024-11-04 12:49:18 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-11-04 12:49:18 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-04 12:49:18 [main] INFO  o.t.utility.ImageNameSubstitutor - Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2024-11-04 12:49:18 [main] INFO  o.t.d.DockerClientProviderStrategy - Loaded org.testcontainers.dockerclient.UnixSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2024-11-04 12:49:18 [main] INFO  o.t.d.DockerClientProviderStrategy - Found Docker environment with local Unix socket (unix:///var/run/docker.sock)
+2024-11-04 12:49:18 [main] INFO  o.testcontainers.DockerClientFactory - Docker host IP address is localhost
+2024-11-04 12:49:18 [main] INFO  o.testcontainers.DockerClientFactory - Connected to docker: 
+  Server Version: 25.0.3
+  API Version: 1.44
+  Operating System: Docker Desktop
+  Total Memory: 7840 MB
+2024-11-04 12:49:18 [main] INFO  tc.testcontainers/ryuk:0.4.0 - Creating container for image: testcontainers/ryuk:0.4.0
+2024-11-04 12:49:18 [main] INFO  o.t.utility.RegistryAuthLocator - Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2024-11-04 12:49:18 [main] INFO  tc.testcontainers/ryuk:0.4.0 - Container testcontainers/ryuk:0.4.0 is starting: b27628cc820cd480159ba7d7e5d7d0076490fb4c1c5c19efdb286254e8e2e58f
+2024-11-04 12:49:18 [main] INFO  tc.testcontainers/ryuk:0.4.0 - Container testcontainers/ryuk:0.4.0 started in PT0.275316S
+2024-11-04 12:49:18 [main] INFO  o.t.utility.RyukResourceReaper - Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2024-11-04 12:49:18 [main] INFO  o.testcontainers.DockerClientFactory - Checking the system...
+2024-11-04 12:49:18 [main] INFO  o.testcontainers.DockerClientFactory - ✔︎ Docker server version should be at least 1.6.0
+2024-11-04 12:49:18 [main] INFO  tc.postgres:15.3-alpine3.18 - Creating container for image: postgres:15.3-alpine3.18
+2024-11-04 12:49:18 [main] INFO  tc.postgres:15.3-alpine3.18 - Container postgres:15.3-alpine3.18 is starting: 22f20261c18e460ed009144b1d9343961181f0ac8f75832dfeaaa6c842a6a440
+2024-11-04 12:49:19 [main] INFO  tc.postgres:15.3-alpine3.18 - Container postgres:15.3-alpine3.18 started in PT0.769061S
+2024-11-04 12:49:19 [main] INFO  tc.postgres:15.3-alpine3.18 - Container is started (JDBC URL: jdbc:postgresql://localhost:59034/test?loggerLevel=OFF)
+2024-11-04 12:49:19 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.testcontainers.jdbc.ConnectionWrapper@37d871c2
+2024-11-04 12:49:19 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-04 12:49:19 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-11-04 12:49:19 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:49:19 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - relation "appointments" does not exist, skipping
+2024-11-04 12:49:19 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:49:19 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - relation "trips" does not exist, skipping
+2024-11-04 12:49:19 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:49:19 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - relation "users" does not exist, skipping
+2024-11-04 12:49:19 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:49:19 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "appointments" does not exist, skipping
+2024-11-04 12:49:19 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:49:19 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "doctors" does not exist, skipping
+2024-11-04 12:49:19 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:49:19 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "guides" does not exist, skipping
+2024-11-04 12:49:19 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:49:19 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "roles" does not exist, skipping
+2024-11-04 12:49:20 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:49:20 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "trips" does not exist, skipping
+2024-11-04 12:49:20 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:49:20 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "users" does not exist, skipping
+2024-11-04 12:49:20 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2024-11-04 12:49:20 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection org.testcontainers.jdbc.ConnectionWrapper@2bb3f39e
+2024-11-04 12:49:20 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2024-11-04 12:49:20 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-11-04 12:49:20 [main] INFO  io.javalin.Javalin - Starting Javalin ...
+2024-11-04 12:49:20 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.23; built: 2024-08-14T01:40:17.906Z; git: 6fcf5ccaebd7ca13a0cb96c96adca699a24080a0; jvm 17.0.10+7-LTS
+2024-11-04 12:49:20 [main] INFO  o.e.j.s.s.DefaultSessionIdManager - Session workerName=node0
+2024-11-04 12:49:20 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@66589252{/api,null,AVAILABLE}
+2024-11-04 12:49:20 [main] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@8f589d7{HTTP/1.1, (http/1.1)}{0.0.0.0:7070}
+2024-11-04 12:49:20 [main] INFO  org.eclipse.jetty.server.Server - Started Server@7bdf94f2{STARTING}[11.0.23,sto=0] @2542ms
+2024-11-04 12:49:20 [main] INFO  io.javalin.Javalin - Javalin started in 53ms \o/
+2024-11-04 12:49:20 [main] INFO  io.javalin.Javalin - Listening on http://localhost:7070/api
+2024-11-04 12:49:20 [main] INFO  io.javalin.Javalin - You are running Javalin 6.3.0 (released August 22, 2024).
+2024-11-04 12:49:21 [JettyServerThreadPool-40] INFO  dat.daos.impl.TripDAO - Retrieved 1 trips for category CITY
+2024-11-04 12:49:21 [JettyServerThreadPool-40] INFO  dat.config.ApplicationConfig - Request 1 - GET /api/trips/category/CITY was handled with status code 200 OK
+2024-11-04 12:49:21 [main] INFO  io.javalin.Javalin - Stopping Javalin ...
+2024-11-04 12:49:21 [main] INFO  org.eclipse.jetty.server.Server - Stopped Server@7bdf94f2{STOPPING}[11.0.23,sto=0]
+2024-11-04 12:49:21 [main] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@8f589d7{HTTP/1.1, (http/1.1)}{0.0.0.0:7070}
+2024-11-04 12:49:21 [main] INFO  o.e.j.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@66589252{/api,null,STOPPED}
+2024-11-04 12:49:21 [main] INFO  io.javalin.Javalin - Javalin has stopped
+2024-11-04 12:49:25 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.4.Final
+2024-11-04 12:49:25 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-11-04 12:49:25 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-04 12:49:25 [main] INFO  o.t.utility.ImageNameSubstitutor - Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2024-11-04 12:49:25 [main] INFO  o.t.d.DockerClientProviderStrategy - Loaded org.testcontainers.dockerclient.UnixSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2024-11-04 12:49:25 [main] INFO  o.t.d.DockerClientProviderStrategy - Found Docker environment with local Unix socket (unix:///var/run/docker.sock)
+2024-11-04 12:49:25 [main] INFO  o.testcontainers.DockerClientFactory - Docker host IP address is localhost
+2024-11-04 12:49:25 [main] INFO  o.testcontainers.DockerClientFactory - Connected to docker: 
+  Server Version: 25.0.3
+  API Version: 1.44
+  Operating System: Docker Desktop
+  Total Memory: 7840 MB
+2024-11-04 12:49:25 [main] INFO  tc.testcontainers/ryuk:0.4.0 - Creating container for image: testcontainers/ryuk:0.4.0
+2024-11-04 12:49:26 [main] INFO  o.t.utility.RegistryAuthLocator - Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2024-11-04 12:49:26 [main] INFO  tc.testcontainers/ryuk:0.4.0 - Container testcontainers/ryuk:0.4.0 is starting: 07a733fdc2244d9903f35b52f7fd70dafd03707243595aead3f5a4350fe654bf
+2024-11-04 12:49:26 [main] INFO  tc.testcontainers/ryuk:0.4.0 - Container testcontainers/ryuk:0.4.0 started in PT0.313828S
+2024-11-04 12:49:26 [main] INFO  o.t.utility.RyukResourceReaper - Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2024-11-04 12:49:26 [main] INFO  o.testcontainers.DockerClientFactory - Checking the system...
+2024-11-04 12:49:26 [main] INFO  o.testcontainers.DockerClientFactory - ✔︎ Docker server version should be at least 1.6.0
+2024-11-04 12:49:26 [main] INFO  tc.postgres:15.3-alpine3.18 - Creating container for image: postgres:15.3-alpine3.18
+2024-11-04 12:49:26 [main] INFO  tc.postgres:15.3-alpine3.18 - Container postgres:15.3-alpine3.18 is starting: e8b035f142ecb8615ec9157444c22067a101d59bdf8a06823397672d3a4f1670
+2024-11-04 12:49:26 [main] INFO  tc.postgres:15.3-alpine3.18 - Container postgres:15.3-alpine3.18 started in PT0.745668S
+2024-11-04 12:49:26 [main] INFO  tc.postgres:15.3-alpine3.18 - Container is started (JDBC URL: jdbc:postgresql://localhost:59065/test?loggerLevel=OFF)
+2024-11-04 12:49:27 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.testcontainers.jdbc.ConnectionWrapper@3ab6678b
+2024-11-04 12:49:27 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-04 12:49:27 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-11-04 12:49:27 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:49:27 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - relation "appointments" does not exist, skipping
+2024-11-04 12:49:27 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:49:27 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - relation "trips" does not exist, skipping
+2024-11-04 12:49:27 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:49:27 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - relation "users" does not exist, skipping
+2024-11-04 12:49:27 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:49:27 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "appointments" does not exist, skipping
+2024-11-04 12:49:27 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:49:27 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "doctors" does not exist, skipping
+2024-11-04 12:49:27 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:49:27 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "guides" does not exist, skipping
+2024-11-04 12:49:27 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:49:27 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "roles" does not exist, skipping
+2024-11-04 12:49:27 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:49:27 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "trips" does not exist, skipping
+2024-11-04 12:49:27 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:49:27 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "users" does not exist, skipping
+2024-11-04 12:49:27 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2024-11-04 12:49:27 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection org.testcontainers.jdbc.ConnectionWrapper@11c3ce6a
+2024-11-04 12:49:27 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2024-11-04 12:49:27 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-11-04 12:49:27 [main] INFO  io.javalin.Javalin - Starting Javalin ...
+2024-11-04 12:49:27 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.23; built: 2024-08-14T01:40:17.906Z; git: 6fcf5ccaebd7ca13a0cb96c96adca699a24080a0; jvm 17.0.10+7-LTS
+2024-11-04 12:49:27 [main] INFO  o.e.j.s.s.DefaultSessionIdManager - Session workerName=node0
+2024-11-04 12:49:27 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@66589252{/api,null,AVAILABLE}
+2024-11-04 12:49:27 [main] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@8f589d7{HTTP/1.1, (http/1.1)}{0.0.0.0:7070}
+2024-11-04 12:49:27 [main] INFO  org.eclipse.jetty.server.Server - Started Server@7bdf94f2{STARTING}[11.0.23,sto=0] @2554ms
+2024-11-04 12:49:27 [main] INFO  io.javalin.Javalin - Javalin started in 56ms \o/
+2024-11-04 12:49:27 [main] INFO  io.javalin.Javalin - Listening on http://localhost:7070/api
+2024-11-04 12:49:27 [main] INFO  io.javalin.Javalin - You are running Javalin 6.3.0 (released August 22, 2024).
+2024-11-04 12:49:28 [JettyServerThreadPool-40] INFO  dat.daos.impl.TripDAO - Retrieved price totals for 2 guides
+2024-11-04 12:49:28 [JettyServerThreadPool-40] INFO  dat.config.ApplicationConfig - Request 1 - GET /api/trips/guides/totalprice was handled with status code 200 OK
+2024-11-04 12:49:28 [main] INFO  io.javalin.Javalin - Stopping Javalin ...
+2024-11-04 12:49:28 [main] INFO  org.eclipse.jetty.server.Server - Stopped Server@7bdf94f2{STOPPING}[11.0.23,sto=0]
+2024-11-04 12:49:28 [main] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@8f589d7{HTTP/1.1, (http/1.1)}{0.0.0.0:7070}
+2024-11-04 12:49:28 [main] INFO  o.e.j.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@66589252{/api,null,STOPPED}
+2024-11-04 12:49:28 [main] INFO  io.javalin.Javalin - Javalin has stopped
+2024-11-04 12:49:45 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.4.Final
+2024-11-04 12:49:45 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-11-04 12:49:45 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-04 12:49:45 [main] INFO  o.t.utility.ImageNameSubstitutor - Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2024-11-04 12:49:45 [main] INFO  o.t.d.DockerClientProviderStrategy - Loaded org.testcontainers.dockerclient.UnixSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2024-11-04 12:49:45 [main] INFO  o.t.d.DockerClientProviderStrategy - Found Docker environment with local Unix socket (unix:///var/run/docker.sock)
+2024-11-04 12:49:45 [main] INFO  o.testcontainers.DockerClientFactory - Docker host IP address is localhost
+2024-11-04 12:49:45 [main] INFO  o.testcontainers.DockerClientFactory - Connected to docker: 
+  Server Version: 25.0.3
+  API Version: 1.44
+  Operating System: Docker Desktop
+  Total Memory: 7840 MB
+2024-11-04 12:49:45 [main] INFO  tc.testcontainers/ryuk:0.4.0 - Creating container for image: testcontainers/ryuk:0.4.0
+2024-11-04 12:49:45 [main] INFO  o.t.utility.RegistryAuthLocator - Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2024-11-04 12:49:45 [main] INFO  tc.testcontainers/ryuk:0.4.0 - Container testcontainers/ryuk:0.4.0 is starting: fef7e3e2f8b4df1ef6c8ef13aaae664dcffdd251f5dd6c109af2f554a36497b4
+2024-11-04 12:49:45 [main] INFO  tc.testcontainers/ryuk:0.4.0 - Container testcontainers/ryuk:0.4.0 started in PT0.370081S
+2024-11-04 12:49:45 [main] INFO  o.t.utility.RyukResourceReaper - Ryuk started - will monitor and terminate Testcontainers containers on JVM exit
+2024-11-04 12:49:45 [main] INFO  o.testcontainers.DockerClientFactory - Checking the system...
+2024-11-04 12:49:45 [main] INFO  o.testcontainers.DockerClientFactory - ✔︎ Docker server version should be at least 1.6.0
+2024-11-04 12:49:45 [main] INFO  tc.postgres:15.3-alpine3.18 - Creating container for image: postgres:15.3-alpine3.18
+2024-11-04 12:49:45 [main] INFO  tc.postgres:15.3-alpine3.18 - Container postgres:15.3-alpine3.18 is starting: 16ba1d840a7419f135b53aec0db43b7131698e93e1737525cde7ff801e33d1f4
+2024-11-04 12:49:46 [main] INFO  tc.postgres:15.3-alpine3.18 - Container postgres:15.3-alpine3.18 started in PT0.74422S
+2024-11-04 12:49:46 [main] INFO  tc.postgres:15.3-alpine3.18 - Container is started (JDBC URL: jdbc:postgresql://localhost:59098/test?loggerLevel=OFF)
+2024-11-04 12:49:46 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.testcontainers.jdbc.ConnectionWrapper@52d6cd34
+2024-11-04 12:49:46 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-04 12:49:46 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-11-04 12:49:47 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:49:47 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - relation "appointments" does not exist, skipping
+2024-11-04 12:49:47 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:49:47 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - relation "trips" does not exist, skipping
+2024-11-04 12:49:47 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:49:47 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - relation "users" does not exist, skipping
+2024-11-04 12:49:47 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:49:47 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "appointments" does not exist, skipping
+2024-11-04 12:49:47 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:49:47 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "doctors" does not exist, skipping
+2024-11-04 12:49:47 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:49:47 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "guides" does not exist, skipping
+2024-11-04 12:49:47 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:49:47 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "roles" does not exist, skipping
+2024-11-04 12:49:47 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:49:47 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "trips" does not exist, skipping
+2024-11-04 12:49:47 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 12:49:47 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - table "users" does not exist, skipping
+2024-11-04 12:49:47 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2024-11-04 12:49:47 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection org.testcontainers.jdbc.ConnectionWrapper@3fd5d679
+2024-11-04 12:49:47 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2024-11-04 12:49:47 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-11-04 12:49:47 [main] INFO  io.javalin.Javalin - Starting Javalin ...
+2024-11-04 12:49:47 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.23; built: 2024-08-14T01:40:17.906Z; git: 6fcf5ccaebd7ca13a0cb96c96adca699a24080a0; jvm 17.0.10+7-LTS
+2024-11-04 12:49:47 [main] INFO  o.e.j.s.s.DefaultSessionIdManager - Session workerName=node0
+2024-11-04 12:49:47 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@66589252{/api,null,AVAILABLE}
+2024-11-04 12:49:47 [main] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@8f589d7{HTTP/1.1, (http/1.1)}{0.0.0.0:7070}
+2024-11-04 12:49:47 [main] INFO  org.eclipse.jetty.server.Server - Started Server@7bdf94f2{STARTING}[11.0.23,sto=0] @2680ms
+2024-11-04 12:49:47 [main] INFO  io.javalin.Javalin - Javalin started in 52ms \o/
+2024-11-04 12:49:47 [main] INFO  io.javalin.Javalin - Listening on http://localhost:7070/api
+2024-11-04 12:49:47 [main] INFO  io.javalin.Javalin - You are running Javalin 6.3.0 (released August 22, 2024).
+2024-11-04 12:49:48 [JettyServerThreadPool-40] WARN  dat.controllers.ExceptionController - Security validation error at /api/trips: You need to log in!
+2024-11-04 12:49:48 [JettyServerThreadPool-40] INFO  dat.config.ApplicationConfig - Request 1 - POST /api/trips was handled with status code 401 Unauthorized
+2024-11-04 12:49:48 [main] INFO  io.javalin.Javalin - Stopping Javalin ...
+2024-11-04 12:49:48 [main] INFO  org.eclipse.jetty.server.Server - Stopped Server@7bdf94f2{STOPPING}[11.0.23,sto=0]
+2024-11-04 12:49:48 [main] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@8f589d7{HTTP/1.1, (http/1.1)}{0.0.0.0:7070}
+2024-11-04 12:49:48 [main] INFO  o.e.j.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@66589252{/api,null,STOPPED}
+2024-11-04 12:49:48 [main] INFO  io.javalin.Javalin - Javalin has stopped

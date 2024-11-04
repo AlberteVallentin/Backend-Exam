@@ -1,19 +1,16 @@
 package dat.config;
 
-import dat.dtos.DoctorDTO;
-import dat.entities.Doctor;
-import dat.entities.Appointment;
-import dat.enums.Speciality;
+import dat.dtos.TripDTO;
+import dat.entities.Trip;
+import dat.entities.Guide;
+import dat.enums.TripCategory;
 import dat.security.entities.User;
 import dat.security.entities.Role;
 import dat.security.token.UserDTO;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.ZonedDateTime;
 
 import static dat.security.enums.RoleType.ADMIN;
 import static dat.security.enums.RoleType.USER;
@@ -24,17 +21,17 @@ public class PopulatorTest {
         User user, admin;
         Role userRole, adminRole;
 
-        // Definer rollerne USER og ADMIN
+        // Define USER and ADMIN roles
         userRole = new Role(USER);
         adminRole = new Role(ADMIN);
 
-        // Opret brugere med hash'et adgangskode og tildel roller
+        // Create users with hashed passwords and assign roles
         user = new User("User Test", "user@test.com", "user123", userRole);
         admin = new User("Admin Test", "admin@test.com", "admin123", adminRole);
 
         try (EntityManager em = emf.createEntityManager()) {
             em.getTransaction().begin();
-            // Persist roller og brugere
+            // Persist roles and users
             em.persist(userRole);
             em.persist(adminRole);
             em.persist(user);
@@ -42,77 +39,95 @@ public class PopulatorTest {
             em.getTransaction().commit();
         }
 
-        // Returner DTO'er for testformål
+        // Return DTOs for testing purposes
         UserDTO userDTO = new UserDTO(user.getEmail(), "user123");
         UserDTO adminDTO = new UserDTO(admin.getEmail(), "admin123");
         return new UserDTO[]{userDTO, adminDTO};
     }
 
-
-    public static DoctorDTO[] populateDoctors(EntityManagerFactory emf) {
+    public static TripDTO[] populateTrips(EntityManagerFactory emf) {
         try (EntityManager em = emf.createEntityManager()) {
             em.getTransaction().begin();
 
-            // Opret første læge
-            Doctor doctor1 = new Doctor();
-            doctor1.setName("Dr. Alice Smith");
-            doctor1.setDateOfBirth(LocalDate.of(1975, 4, 12));
-            doctor1.setYearOfGraduation(2000);
-            doctor1.setNameOfClinic("City Health Clinic");
-            doctor1.setSpeciality(Speciality.FAMILY_MEDICINE);
+            // Create first guide
+            Guide guide1 = new Guide();
+            guide1.setFirstName("John");
+            guide1.setLastName("Smith");
+            guide1.setEmail("john.smith@guides.com");
+            guide1.setPhone("+45 12345678");
+            guide1.setYearsOfExperience(5);
 
-            // Tilføj aftaler til doctor1
-            Appointment app1 = new Appointment();
-            app1.setClientName("John Smith");
-            app1.setDate(LocalDate.now().plusDays(1));
-            app1.setTime(LocalTime.of(9, 45));
-            app1.setComment("First visit");
-            doctor1.addAppointment(app1);
+            // Create second guide
+            Guide guide2 = new Guide();
+            guide2.setFirstName("Sarah");
+            guide2.setLastName("Johnson");
+            guide2.setEmail("sarah.j@guides.com");
+            guide2.setPhone("+45 87654321");
+            guide2.setYearsOfExperience(8);
 
-            Appointment app2 = new Appointment();
-            app2.setClientName("Alice Johnson");
-            app2.setDate(LocalDate.now().plusDays(2));
-            app2.setTime(LocalTime.of(10, 30));
-            app2.setComment("Follow up");
-            doctor1.addAppointment(app2);
+            // Create first trip
+            Trip trip1 = new Trip();
+            trip1.setName("Copenhagen City Walk");
+            trip1.setStartTime(ZonedDateTime.now().plusDays(1).withHour(10).withMinute(0));
+            trip1.setEndTime(ZonedDateTime.now().plusDays(1).withHour(12).withMinute(0));
+            trip1.setLongitude(12.5683);
+            trip1.setLatitude(55.6761);
+            trip1.setPrice(299.99);
+            trip1.setCategory(TripCategory.CITY);
+            guide1.addTrip(trip1);
 
-            // Opret anden læge
-            Doctor doctor2 = new Doctor();
-            doctor2.setName("Dr. Bob Johnson");
-            doctor2.setDateOfBirth(LocalDate.of(1980, 8, 5));
-            doctor2.setYearOfGraduation(2005);
-            doctor2.setNameOfClinic("Downtown Medical Center");
-            doctor2.setSpeciality(Speciality.SURGERY);
+            // Create second trip
+            Trip trip2 = new Trip();
+            trip2.setName("Amager Beach Experience");
+            trip2.setStartTime(ZonedDateTime.now().plusDays(2).withHour(14).withMinute(0));
+            trip2.setEndTime(ZonedDateTime.now().plusDays(2).withHour(17).withMinute(0));
+            trip2.setLongitude(12.6347);
+            trip2.setLatitude(55.6582);
+            trip2.setPrice(399.99);
+            trip2.setCategory(TripCategory.BEACH);
+            guide1.addTrip(trip2);
 
-            // Tilføj aftaler til doctor2
-            Appointment app3 = new Appointment();
-            app3.setClientName("Emily White");
-            app3.setDate(LocalDate.now().plusDays(3));
-            app3.setTime(LocalTime.of(14, 0));
-            app3.setComment("General check");
-            doctor2.addAppointment(app3);
+            // Create third trip
+            Trip trip3 = new Trip();
+            trip3.setName("Dyrehaven Forest Tour");
+            trip3.setStartTime(ZonedDateTime.now().plusDays(3).withHour(9).withMinute(0));
+            trip3.setEndTime(ZonedDateTime.now().plusDays(3).withHour(13).withMinute(0));
+            trip3.setLongitude(12.5693);
+            trip3.setLatitude(55.7832);
+            trip3.setPrice(449.99);
+            trip3.setCategory(TripCategory.FOREST);
+            guide2.addTrip(trip3);
 
-            Appointment app4 = new Appointment();
-            app4.setClientName("David Martinez");
-            app4.setDate(LocalDate.now().plusDays(4));
-            app4.setTime(LocalTime.of(11, 0));
-            app4.setComment("Consultation");
-            doctor2.addAppointment(app4);
+            // Create fourth trip
+            Trip trip4 = new Trip();
+            trip4.setName("Øresund Sea Adventure");
+            trip4.setStartTime(ZonedDateTime.now().plusDays(4).withHour(11).withMinute(0));
+            trip4.setEndTime(ZonedDateTime.now().plusDays(4).withHour(15).withMinute(0));
+            trip4.setLongitude(12.6298);
+            trip4.setLatitude(55.7069);
+            trip4.setPrice(599.99);
+            trip4.setCategory(TripCategory.SEA);
+            guide2.addTrip(trip4);
 
-            // Persist læger (vil kaskadere til aftaler)
-            em.persist(doctor1);
-            em.persist(doctor2);
+            // Persist guides (will cascade to trips)
+            em.persist(guide1);
+            em.persist(guide2);
 
             em.getTransaction().commit();
 
-            System.out.println("Database populated with doctors and appointments!");
+            System.out.println("Test database populated with trips and guides!");
 
-            // Returner DTO'er for testformål
-            return new DoctorDTO[]{new DoctorDTO(doctor1), new DoctorDTO(doctor2)};
+            // Return DTOs for test purposes
+            return new TripDTO[]{
+                new TripDTO(trip1),
+                new TripDTO(trip2),
+                new TripDTO(trip3),
+                new TripDTO(trip4)
+            };
         } catch (Exception e) {
             e.printStackTrace();
-            System.err.println("Could not populate database: " + e.getMessage());
-            return new DoctorDTO[0];
+            System.err.println("Could not populate test database: " + e.getMessage());
+            return new TripDTO[0];
         }
     }
 }
