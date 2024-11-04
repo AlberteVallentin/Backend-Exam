@@ -2,6 +2,8 @@ package dat.config;
 
 import dat.entities.Appointment;
 import dat.entities.Doctor;
+import dat.entities.Guide;
+import dat.entities.Trip;
 import dat.exceptions.ApiException;
 import dat.security.entities.Role;
 import dat.security.entities.User;
@@ -61,6 +63,8 @@ public class HibernateConfig {
     private static void getAnnotationConfiguration(Configuration configuration) {
         configuration.addAnnotatedClass(Doctor.class);
         configuration.addAnnotatedClass(Appointment.class);
+        configuration.addAnnotatedClass(Trip.class);
+        configuration.addAnnotatedClass(Guide.class);
         configuration.addAnnotatedClass(User.class);
         configuration.addAnnotatedClass(Role.class);
     }
