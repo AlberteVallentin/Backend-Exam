@@ -107,7 +107,6 @@ public class TripDAO implements IDAO<TripDTO, Integer>, ITripGuideDAO {
 
     public void delete(Integer id) throws ApiException {
         try (EntityManager em = emf.createEntityManager()) {
-            // Find turen først, udenfor transaktionen
             Trip trip = em.find(Trip.class, id);
             if (trip == null) {
                 throw new ApiException(404, "Trip not found with id: " + id);

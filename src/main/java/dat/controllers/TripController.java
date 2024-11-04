@@ -34,14 +34,13 @@ public class TripController {
         int id = validateId(ctx);
         TripDTO trip = tripDAO.getById(id);
 
-        // Hent pakkeliste for turens kategori
         try {
             List<PackingItemDTO> packingItems = packingService.getPackingItems(
                 trip.getCategory().toString());
             trip.setPackingItems(packingItems);
         } catch (ApiException e) {
             LOGGER.error("Error fetching packing items: {}", e.getMessage());
-            // Vi fortsætter uden pakkeliste hvis der er fejl
+            // Continue without packing items if the API call fails
         }
         ctx.json(trip);
         ctx.status(200);

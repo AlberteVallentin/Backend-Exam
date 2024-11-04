@@ -412,7 +412,33 @@ Content-Type: application/json
 
 
 
-# Technical Implementation Decisions
+# Technical Implementation Decisions and Workflow
+
+## General Workflow
+
+### Initial Planning
+
+I began by thoroughly reading through the entire task description to understand the requirements and identify areas where additional features, such as security, could be beneficial. I noticed that security was a potential requirement, and since I had already set up the basic security configuration in my starter code, I decided to implement it right away. By doing this, I ensured that I wouldn't need to refactor my code later to add security features, saving time and avoiding potential issues down the line.
+
+### Branching Strategy with Git
+
+To manage my workflow effectively, I used Git to create separate branches for each task. By working on different branches, I could focus on individual tasks without affecting the main codebase. Once a task was completed, I merged the branch into the main branch. This branching strategy helped maintain a clean and organized project history, making it easier to track changes and roll back if necessary.
+
+### Use of Logger for Debugging and Monitoring
+
+Throughout the project, I made use of the `Logger` from the `SLF4J` library to provide real-time debugging and monitoring information. This included logging key events such as:
+
+- Starting and committing database transactions.
+- Creating entities like guides and trips.
+- Errors and exceptions during CRUD operations.
+
+The benefits of using a logger are significant:
+
+- **Debugging**: It provides a clear insight into the flow of the application, which is extremely helpful for identifying where things might go wrong during execution.
+- **Error Tracking**: By logging errors and exceptions, it becomes easier to troubleshoot issues in production environments, as the logs provide detailed information about the failure, including stack traces and custom error messages.
+- **Audit Trail**: It helps in maintaining an audit trail of operations performed, which is useful for understanding the application's behavior over time, such as tracking changes to the database.
+
+For example, in the `Populator` class, I used `LOGGER.info()` to inform when the database was being populated and `LOGGER.debug()` to detail specific entity creation. Similarly, in the `TripDAO` class, I logged important CRUD operations and any errors that occurred during the process, ensuring that all critical actions were recorded for easier monitoring and debugging.
 
 ## Use of JPA (JPQL) vs Java Streams in Task 5
 
