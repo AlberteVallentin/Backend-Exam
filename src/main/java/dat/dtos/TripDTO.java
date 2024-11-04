@@ -3,8 +3,11 @@ package dat.dtos;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
+import dat.entities.Trip;
+import dat.enums.TripCategory;
 
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 @Getter
 @Setter
@@ -13,11 +16,12 @@ import java.time.LocalDateTime;
 public class TripDTO {
     private Integer id;
 
-    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
-    private LocalDateTime startTime;
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
+    private ZonedDateTime startTime;
 
-    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
-    private LocalDateTime endTime;
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
+    private ZonedDateTime endTime;
+
 
     private Double longitude;
     private Double latitude;
@@ -25,7 +29,6 @@ public class TripDTO {
     private Double price;
     private TripCategory category;
     private GuideDTO guide;
-    private List<PackingItemDTO> packingItems;
 
     public TripDTO(Trip trip) {
         this.id = trip.getId();

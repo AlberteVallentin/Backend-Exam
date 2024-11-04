@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 
 @Entity
@@ -18,10 +19,10 @@ public class Trip {
     private Integer id;
 
     @Column(nullable = false)
-    private LocalDateTime startTime;
+    private ZonedDateTime startTime;
 
     @Column(nullable = false)
-    private LocalDateTime endTime;
+    private ZonedDateTime endTime;
 
     @Column(nullable = false)
     private Double longitude;
