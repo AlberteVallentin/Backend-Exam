@@ -409,7 +409,73 @@ Content-Type: application/json
 }
 ```
 
+## Task 8:
 
+### 8.3 Ensuring Tests Pass with Security Implementation
+
+To ensure that the tests pass without issues after adding security roles, the implementation implemented the following steps:
+
+1. **Obtain Authentication Tokens in Tests**:
+   - During the setup (`@BeforeEach`), the implementation obtain JWT tokens for both `userDTO` and `adminDTO`. These tokens are then used in subsequent API requests during tests.
+   - This ensures that all protected endpoints are accessed with valid tokens, simulating authenticated access.
+
+    ```java
+    try {
+        UserDTO verifiedUser = securityDAO.getVerifiedUser(userDTO.getEmail(), userDTO.getPassword());
+        UserDTO verifiedAdmin = securityDAO.getVerifiedUser(adminDTO.getEmail(), adminDTO.getPassword());
+
+        userToken = "Bearer " + securityController.createToken(verifiedUser);
+        adminToken = "Bearer " + securityController.createToken(verifiedAdmin);
+    } catch (Exception e) {
+        throw new RuntimeException("Failed to setup security tokens", e);
+    }
+    ```
+
+2. **Include Authorization Headers**:
+   - For endpoints that require a certain role, the corresponding Rest Assured test was updated to include the `Authorization` header with a valid token (`userToken` or `adminToken`).
+   - For example, the test for creating a new trip was updated as follows:
+
+    ```java
+    TripDTO createdTrip = given()
+        .contentType("application/json")
+        .header("Authorization", userToken)
+        .body(newTrip)
+        .when()
+        .post(BASE_URL + "/trips")
+        .then()
+        .statusCode(201)
+        .extract()
+        .as(TripDTO.class);
+    ```
+   - The `updateTrip`, `deleteTrip`, and other endpoints that require secure access were also updated similarly.
+
+3. **Unauthorized Access Tests**:
+   - Tests were added to verify that endpoints return `401 Unauthorized` if the user tries to access a protected route without a token or with an invalid token.
+   - Example:
+
+    ```java
+    given()
+        .contentType("application/json")
+        .body(newTrip)
+        .when()
+        .post(BASE_URL + "/trips")
+        .then()
+        .statusCode(401);
+    ```
+
+4. **Role Validation**:
+   - For endpoints that require `ADMIN` access, the `adminToken` was used instead of `userToken` to ensure the tests verify proper role-based permissions.
+   - Example:
+
+    ```java
+    given()
+        .contentType("application/json")
+        .header("Authorization", adminToken)
+        .when()
+        .delete(BASE_URL + "/trips/" + trip1.getId())
+        .then()
+        .statusCode(204);
+    ```
 
 
 # Technical Implementation Decisions and Workflow
