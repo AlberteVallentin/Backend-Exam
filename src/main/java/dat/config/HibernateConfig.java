@@ -1,7 +1,5 @@
 package dat.config;
 
-import dat.entities.Appointment;
-import dat.entities.Doctor;
 import dat.entities.Guide;
 import dat.entities.Trip;
 import dat.exceptions.ApiException;
@@ -61,8 +59,6 @@ public class HibernateConfig {
      * This method is called during EMF creation
      */
     private static void getAnnotationConfiguration(Configuration configuration) {
-        configuration.addAnnotatedClass(Doctor.class);
-        configuration.addAnnotatedClass(Appointment.class);
         configuration.addAnnotatedClass(Trip.class);
         configuration.addAnnotatedClass(Guide.class);
         configuration.addAnnotatedClass(User.class);

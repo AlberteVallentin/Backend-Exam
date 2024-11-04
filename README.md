@@ -414,7 +414,7 @@ Content-Type: application/json
 
 ## Technical Implementation Decisions
 
-### Use of JPA (JPQL) vs Java Streams
+### Use of JPA (JPQL) vs Java Streams in Task 5
 
 In implementing the guide total price calculation (`/trips/guides/totalprice`), I chose to use JPQL (Java Persistence Query Language) over Java Streams for several key reasons:
 
