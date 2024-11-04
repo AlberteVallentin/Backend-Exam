@@ -440,6 +440,17 @@ The benefits of using a logger are significant:
 
 For example, in the `Populator` class, I used `LOGGER.info()` to inform when the database was being populated and `LOGGER.debug()` to detail specific entity creation. Similarly, in the `TripDAO` class, I logged important CRUD operations and any errors that occurred during the process, ensuring that all critical actions were recorded for easier monitoring and debugging.
 
+### Database Reset During Population
+
+When populating the database, I chose to delete all existing data and reset the sequences to start from `0`. This decision was made for several reasons:
+- **Data Consistency**: By starting with a clean slate, I ensured that there were no leftover or inconsistent data from previous runs that could affect the correctness of the current data population. This helps in maintaining a predictable state of the database.
+- **Primary Key Management**: Resetting ID sequences ensures that primary key values start from `1` each time, making it easier to track entity creation and maintain a clear, sequential order of records. This is particularly helpful when verifying logs or debugging issues related to specific entities.
+
+The reset process involved deleting all records from the `Trip` and `Guide` tables, followed by resetting their respective ID sequences to start from `1`. This approach allowed for a clean and consistent environment, making it straightforward to populate the database without unexpected conflicts or duplicates.
+
+I implemented this approach before moving on to Task 7, which involved testing the endpoints. At that point, I also chose to create a test-specific populator to ensure that testing could be carried out effectively with controlled data.
+
+
 ## Use of JPA (JPQL) vs Java Streams in Task 5
 
 In implementing the guide total price calculation (`/trips/guides/totalprice`), I chose to use JPQL (Java Persistence Query Language) instead of Java Streams. This decision was based on several critical factors:
@@ -486,7 +497,8 @@ In the DAO implementation, `@SuppressWarnings("unchecked")` is used for the JPQL
 ## Summary
 
 This implementation leverages JPQL to provide optimal performance, memory efficiency, and reduced network overhead while ensuring clear and concise code. The use of `@SuppressWarnings("unchecked")` is a pragmatic choice to maintain type safety where the compiler's warnings are not applicable. Together, these decisions contribute to an efficient, maintainable, and scalable solution.
-### Use of @JsonInclude(JsonInclude.Include.NON_NULL)
+
+## Use of @JsonInclude(JsonInclude.Include.NON_NULL)
 
 In our DTOs (Data Transfer Objects), we use the `@JsonInclude(JsonInclude.Include.NON_NULL)` annotation for several important reasons:
 
