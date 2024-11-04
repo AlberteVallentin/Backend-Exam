@@ -327,6 +327,87 @@ Content-Type: application/json
 ]
 ```
 
+## Task 6:
+
+### Get Packing Items for a Trip
+
+```http
+GET http://localhost:7070/api/trips/4
+Accept: application/json
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "id": 4,
+  "startTime": "2024-11-08T10:00:30.812Z",
+  "endTime": "2024-11-08T14:00:30.812Z",
+  "longitude": 12.6298,
+  "latitude": 55.7069,
+  "name": "Øresund Sea Adventure",
+  "price": 599.99,
+  "category": "SEA",
+  "guide": {
+    "id": 2,
+    "firstName": "Sarah",
+    "lastName": "Johnson",
+    "email": "sarah.j@guides.com",
+    "phone": "+45 87654321",
+    "yearsOfExperience": 8
+  },
+  "packingItems": [
+    {
+      "name": "Sea Kayak",
+      "weightInGrams": 10000.0,
+      "quantity": 1,
+      "description": "Inflatable kayak suitable for Sea adventures."
+    },
+    {
+      "name": "Sea Snorkeling Kit",
+      "weightInGrams": 500.0,
+      "quantity": 1,
+      "description": "Mask and fins set for sea snorkeling."
+    },
+    {
+      "name": "Ocean Hat",
+      "weightInGrams": 150.0,
+      "quantity": 1,
+      "description": "Wide-brim hat for sun protection in sea conditions."
+    },
+    {
+      "name": "Sea Goggles",
+      "weightInGrams": 100.0,
+      "quantity": 1,
+      "description": "Comfortable goggles for sea swimming."
+    },
+    {
+      "name": "Snorkel",
+      "weightInGrams": 150.0,
+      "quantity": 1,
+      "description": "Snorkel for underwater sea exploration."
+    },
+    {
+      "name": "Waterproof Bag",
+      "weightInGrams": 200.0,
+      "quantity": 1,
+      "description": "Bag for keeping belongings dry at sea."
+    }
+  ]
+}
+```
+
+### Get Sum of Packing Items Weight for a Trip
+
+```http 
+GET http://localhost:7070/api/trips/4/weight
+Accept: application/json
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "totalWeightInGrams": 11100.0,
+  "tripId": 4
+}
+```
 
 
 
@@ -381,3 +462,47 @@ In the DAO implementation, I use `@SuppressWarnings("unchecked")` for the JPQL q
     - @SuppressWarnings removes the warning for this specific, safe usage
    
 This implementation provides the optimal balance between performance, resource usage, and type safety while maintaining clean, maintainable code.
+
+
+### Use of @JsonInclude(JsonInclude.Include.NON_NULL)
+
+In our DTOs (Data Transfer Objects), we use the `@JsonInclude(JsonInclude.Include.NON_NULL)` annotation for several important reasons:
+
+1. **Bandwidth Optimization**
+    - Only non-null fields are serialized to JSON
+    - Reduces response payload size
+    - Particularly important when dealing with mobile clients or limited bandwidth
+
+2. **Clean API Responses**
+    - Prevents cluttering of responses with null values
+    - Makes responses easier to read and understand
+    - Example without annotation:
+      ```json
+      {
+        "id": 1,
+        "name": "Copenhagen City Walk",
+        "guide": null,
+        "packingItems": null,
+        "price": 299.99
+      }
+      ```
+    - Example with annotation:
+      ```json
+      {
+        "id": 1,
+        "name": "Copenhagen City Walk",
+        "price": 299.99
+      }
+      ```
+
+3. **Flexible Object Usage**
+    - Same DTO can be used for different endpoints with varying data requirements
+    - Optional fields (like packingItems) only appear when actually populated
+    - Reduces need for multiple specialized DTOs
+
+4. **Error Prevention**
+    - Clients are less likely to process null values incorrectly
+    - Clearer contract about which data is actually available
+    - Helps prevent NullPointerExceptions in client applications
+
+This annotation is particularly useful for our packing items integration, where the data might not always be available (for example, if the external API is temporarily unavailable).

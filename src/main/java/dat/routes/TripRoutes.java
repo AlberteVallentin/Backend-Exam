@@ -31,6 +31,8 @@ public class TripRoutes {
 
                 get("/category/{category}", tripController::getTripsByCategory, RoleType.ANYONE);
                 get("/guides/totalprice", tripController::getGuidesTotalPrices, RoleType.ANYONE);
+                get("/{id}/weight", tripController::getTripPackingWeight, RoleType.ANYONE);
+
             });
         };
     }

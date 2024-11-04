@@ -8,6 +8,7 @@ import dat.enums.TripCategory;
 
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -29,6 +30,7 @@ public class TripDTO {
     private Double price;
     private TripCategory category;
     private GuideDTO guide;
+    private List<PackingItemDTO> packingItems;
 
     public TripDTO(Trip trip) {
         this.id = trip.getId();

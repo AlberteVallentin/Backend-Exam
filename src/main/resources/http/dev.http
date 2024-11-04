@@ -77,10 +77,21 @@ GET {{url}}/trips/category/SEA
 Accept: {{contentType}}
 
 
+
 ### Get guide total prices
 GET {{url}}/trips/guides/totalprice
 Accept: {{contentType}}
 
+
+### Get specific trip with packing list
+GET {{url}}/trips/4
+Accept: {{contentType}}
+
+
+
+### Get total packing weight for a trip
+GET {{url}}/trips/4/weight
+Accept: {{contentType}}
 
 ### Trip Endpoints - User Access (requires jwt_token)
 

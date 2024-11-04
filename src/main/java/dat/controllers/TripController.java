@@ -1,12 +1,17 @@
 package dat.controllers;
 
 import dat.config.HibernateConfig;
+import dat.config.Populator;
 import dat.daos.impl.TripDAO;
+import dat.dtos.PackingItemDTO;
 import dat.dtos.TripDTO;
 import dat.enums.TripCategory;
 import dat.exceptions.ApiException;
 import dat.exceptions.ValidationException;
+import dat.services.PackingService;
 import io.javalin.http.Context;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,6 +21,8 @@ import java.util.stream.Collectors;
 
 public class TripController {
     private final TripDAO tripDAO = TripDAO.getInstance(HibernateConfig.getEntityManagerFactory());
+    private final PackingService packingService = PackingService.getInstance();
+    private static final Logger LOGGER = LoggerFactory.getLogger(TripController.class);
 
     public void getAll(Context ctx) throws ApiException {
         List<TripDTO> trips = tripDAO.getAll();
@@ -26,7 +33,32 @@ public class TripController {
     public void getById(Context ctx) throws ApiException, ValidationException {
         int id = validateId(ctx);
         TripDTO trip = tripDAO.getById(id);
+
+        // Hent pakkeliste for turens kategori
+        try {
+            List<PackingItemDTO> packingItems = packingService.getPackingItems(
+                trip.getCategory().toString());
+            trip.setPackingItems(packingItems);
+        } catch (ApiException e) {
+            LOGGER.error("Error fetching packing items: {}", e.getMessage());
+            // Vi fortsætter uden pakkeliste hvis der er fejl
+        }
         ctx.json(trip);
+        ctx.status(200);
+    }
+
+    public void getTripPackingWeight(Context ctx) throws ApiException, ValidationException {
+        int id = validateId(ctx);
+        TripDTO trip = tripDAO.getById(id);
+
+        List<PackingItemDTO> packingItems = packingService.getPackingItems(
+            trip.getCategory().toString());
+        double totalWeight = packingService.getTotalPackingWeight(packingItems);
+
+        ctx.json(Map.of(
+            "tripId", id,
+            "totalWeightInGrams", totalWeight
+        ));
         ctx.status(200);
     }
 
@@ -94,6 +126,12 @@ public class TripController {
             throw new ApiException(500, "Error retrieving guide total prices");
         }
     }
+
+
+
+
+
+
 
     private TripDTO validateEntity(Context ctx) throws ValidationException {
         TripDTO trip = ctx.bodyAsClass(TripDTO.class);

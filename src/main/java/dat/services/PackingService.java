@@ -38,10 +38,15 @@ public class PackingService {
 
     public List<PackingItemDTO> getPackingItems(String category) throws ApiException {
         try {
+            // Convert the category to lowercase for the API call
+            String apiCategory = category.toLowerCase();
+
             HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(API_BASE_URL + category.toLowerCase()))
+                .uri(URI.create(API_BASE_URL + apiCategory))
                 .GET()
                 .build();
+
+            LOGGER.debug("Fetching packing items for category: {}", apiCategory);
 
             HttpResponse<String> response = client.send(request,
                 HttpResponse.BodyHandlers.ofString());
