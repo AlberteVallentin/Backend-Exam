@@ -22,22 +22,21 @@ public class Populator {
 
     public static void populate(EntityManagerFactory emf) {
         try (EntityManager em = emf.createEntityManager()) {
-            LOGGER.info("Starting database population check...");
+            LOGGER.info("Starting database cleanup and population...");
 
-            // Check if data already exists
-            TypedQuery<Long> guideCountQuery = em.createQuery(
-                "SELECT COUNT(g) FROM Guide g WHERE g.email IN :emails", Long.class);
-            guideCountQuery.setParameter("emails",
-                List.of("john.smith@guides.com", "sarah.j@guides.com"));
-            long existingGuides = guideCountQuery.getSingleResult();
-
-            if (existingGuides > 0) {
-                LOGGER.info("Database already populated. Found {} existing guides.", existingGuides);
-                return;
-            }
-
-            LOGGER.info("No existing data found. Starting population...");
             em.getTransaction().begin();
+
+            // Ryd eksisterende data og nulstil sekvenser
+            em.createQuery("DELETE FROM Trip").executeUpdate();
+            em.createQuery("DELETE FROM Guide").executeUpdate();
+
+            // Nulstil ID sekvenser (PostgreSQL specifik)
+            em.createNativeQuery("ALTER SEQUENCE trips_id_seq RESTART WITH 1").executeUpdate();
+            em.createNativeQuery("ALTER SEQUENCE guides_id_seq RESTART WITH 1").executeUpdate();
+
+            em.getTransaction().commit();
+            em.getTransaction().begin();
+
 
             // Create guides
             LOGGER.info("Creating guides...");

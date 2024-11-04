@@ -319,3 +319,138 @@ Caused by: org.postgresql.util.PSQLException: ERROR: duplicate key value violate
 2024-11-04 11:00:53 [JettyServerThreadPool-27] INFO  dat.config.ApplicationConfig - Request 2 - POST /api/trips was handled with status code 400 Bad Request
 2024-11-04 11:02:06 [JettyServerThreadPool-28] ERROR dat.controllers.ExceptionController - API Error at /api/trips/999: Trip not found with id: 999
 2024-11-04 11:02:06 [JettyServerThreadPool-28] INFO  dat.config.ApplicationConfig - Request 3 - GET /api/trips/999 was handled with status code 404 Not Found
+2024-11-04 11:04:43 [JettyServerThreadPool-28] INFO  dat.config.Populator - Starting database population check...
+2024-11-04 11:04:44 [JettyServerThreadPool-28] INFO  dat.config.Populator - Database already populated. Found 2 existing guides.
+2024-11-04 11:04:44 [JettyServerThreadPool-28] INFO  dat.config.ApplicationConfig - Request 4 - POST /api/trips/populate was handled with status code 201 Created
+2024-11-04 11:05:43 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.4.Final
+2024-11-04 11:05:43 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-11-04 11:05:43 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-04 11:05:43 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@66565121
+2024-11-04 11:05:43 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-04 11:05:43 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-11-04 11:05:43 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 11:05:43 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - constraint "uk_la9k8ppyqhqgpvwsfeyhdr54n" of relation "guides" does not exist, skipping
+2024-11-04 11:05:43 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 11:05:43 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - constraint "uk_6kpjgt1lwdofsckw70uo9eo0" of relation "roles" does not exist, skipping
+2024-11-04 11:05:43 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Warning Code: 0, SQLState: 00000
+2024-11-04 11:05:43 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - constraint "uk_6dotkott2kjsp8vw4d0m25fb7" of relation "users" does not exist, skipping
+2024-11-04 11:05:43 [main] INFO  io.javalin.Javalin - Starting Javalin ...
+2024-11-04 11:05:43 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.23; built: 2024-08-14T01:40:17.906Z; git: 6fcf5ccaebd7ca13a0cb96c96adca699a24080a0; jvm 17.0.10+7-LTS
+2024-11-04 11:05:43 [main] INFO  o.e.j.s.s.DefaultSessionIdManager - Session workerName=node0
+2024-11-04 11:05:43 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@7be38eba{/api,null,AVAILABLE}
+2024-11-04 11:05:43 [main] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@448cdb47{HTTP/1.1, (http/1.1)}{0.0.0.0:7070}
+2024-11-04 11:05:43 [main] INFO  org.eclipse.jetty.server.Server - Started Server@3bc20984{STARTING}[11.0.23,sto=0] @1093ms
+2024-11-04 11:05:43 [main] INFO  io.javalin.Javalin - Javalin started in 57ms \o/
+2024-11-04 11:05:43 [main] INFO  io.javalin.Javalin - Listening on http://localhost:7070/api
+2024-11-04 11:05:43 [main] INFO  io.javalin.Javalin - You are running Javalin 6.3.0 (released August 22, 2024).
+2024-11-04 11:06:23 [JettyServerThreadPool-31] INFO  dat.config.ApplicationConfig - Request 1 - POST /api/auth/register was handled with status code 201 Created
+2024-11-04 11:06:36 [JettyServerThreadPool-27] INFO  dat.config.ApplicationConfig - Request 2 - POST /api/auth/register was handled with status code 201 Created
+2024-11-04 11:06:41 [JettyServerThreadPool-28] INFO  dat.config.ApplicationConfig - Request 3 - POST /api/auth/login was handled with status code 200 OK
+2024-11-04 11:06:46 [JettyServerThreadPool-29] INFO  dat.config.ApplicationConfig - Request 4 - POST /api/auth/user/addrole was handled with status code 200 OK
+2024-11-04 11:06:50 [JettyServerThreadPool-25] INFO  dat.config.ApplicationConfig - Request 5 - POST /api/auth/login was handled with status code 200 OK
+2024-11-04 11:06:59 [JettyServerThreadPool-29] INFO  dat.config.Populator - Starting database population check...
+2024-11-04 11:06:59 [JettyServerThreadPool-29] INFO  dat.config.Populator - No existing data found. Starting population...
+2024-11-04 11:06:59 [JettyServerThreadPool-29] INFO  dat.config.Populator - Creating guides...
+2024-11-04 11:06:59 [JettyServerThreadPool-29] INFO  dat.config.Populator - Creating trips...
+2024-11-04 11:06:59 [JettyServerThreadPool-29] INFO  dat.config.Populator - Persisting guides and their associated trips...
+2024-11-04 11:06:59 [JettyServerThreadPool-29] INFO  dat.config.Populator - Successfully populated database with 2 guides and 4 trips
+2024-11-04 11:06:59 [JettyServerThreadPool-29] INFO  dat.config.ApplicationConfig - Request 6 - POST /api/trips/populate was handled with status code 201 Created
+2024-11-04 11:09:46 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.4.Final
+2024-11-04 11:09:46 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-11-04 11:09:46 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-04 11:09:46 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3cc41abc
+2024-11-04 11:09:46 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-04 11:09:46 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-11-04 11:09:47 [main] INFO  io.javalin.Javalin - Starting Javalin ...
+2024-11-04 11:09:47 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.23; built: 2024-08-14T01:40:17.906Z; git: 6fcf5ccaebd7ca13a0cb96c96adca699a24080a0; jvm 17.0.10+7-LTS
+2024-11-04 11:09:47 [main] INFO  o.e.j.s.s.DefaultSessionIdManager - Session workerName=node0
+2024-11-04 11:09:47 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@2ff498b0{/api,null,AVAILABLE}
+2024-11-04 11:09:47 [main] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@7cd3e0da{HTTP/1.1, (http/1.1)}{0.0.0.0:7070}
+2024-11-04 11:09:47 [main] INFO  org.eclipse.jetty.server.Server - Started Server@3e151e1f{STARTING}[11.0.23,sto=0] @1098ms
+2024-11-04 11:09:47 [main] INFO  io.javalin.Javalin - Javalin started in 52ms \o/
+2024-11-04 11:09:47 [main] INFO  io.javalin.Javalin - Listening on http://localhost:7070/api
+2024-11-04 11:09:47 [main] INFO  io.javalin.Javalin - You are running Javalin 6.3.0 (released August 22, 2024).
+2024-11-04 11:10:03 [JettyServerThreadPool-26] INFO  dat.config.ApplicationConfig - Request 1 - POST /api/auth/login was handled with status code 200 OK
+2024-11-04 11:10:13 [JettyServerThreadPool-22] INFO  dat.config.Populator - Starting database cleanup and population...
+2024-11-04 11:10:13 [JettyServerThreadPool-22] INFO  dat.config.Populator - Creating guides...
+2024-11-04 11:10:13 [JettyServerThreadPool-22] INFO  dat.config.Populator - Creating trips...
+2024-11-04 11:10:13 [JettyServerThreadPool-22] INFO  dat.config.Populator - Persisting guides and their associated trips...
+2024-11-04 11:10:13 [JettyServerThreadPool-22] INFO  dat.config.Populator - Successfully populated database with 2 guides and 4 trips
+2024-11-04 11:10:13 [JettyServerThreadPool-22] INFO  dat.config.ApplicationConfig - Request 2 - POST /api/trips/populate was handled with status code 201 Created
+2024-11-04 11:10:31 [JettyServerThreadPool-23] INFO  dat.daos.impl.TripDAO - Created trip with id: 5
+2024-11-04 11:10:31 [JettyServerThreadPool-23] INFO  dat.config.ApplicationConfig - Request 3 - POST /api/trips was handled with status code 201 Created
+2024-11-04 11:10:38 [JettyServerThreadPool-24] INFO  dat.daos.impl.TripDAO - Updated trip with id: 1
+2024-11-04 11:10:38 [JettyServerThreadPool-24] INFO  dat.config.ApplicationConfig - Request 4 - PUT /api/trips/1 was handled with status code 200 OK
+2024-11-04 11:15:06 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.4.Final
+2024-11-04 11:15:06 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-11-04 11:15:06 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-04 11:15:06 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@333dd51e
+2024-11-04 11:15:06 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-04 11:15:06 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-11-04 11:15:07 [main] INFO  io.javalin.Javalin - Starting Javalin ...
+2024-11-04 11:15:07 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.23; built: 2024-08-14T01:40:17.906Z; git: 6fcf5ccaebd7ca13a0cb96c96adca699a24080a0; jvm 17.0.10+7-LTS
+2024-11-04 11:15:07 [main] INFO  o.e.j.s.s.DefaultSessionIdManager - Session workerName=node0
+2024-11-04 11:15:07 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@5e0f2c82{/api,null,AVAILABLE}
+2024-11-04 11:15:07 [main] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@75ad30c1{HTTP/1.1, (http/1.1)}{0.0.0.0:7070}
+2024-11-04 11:15:07 [main] INFO  org.eclipse.jetty.server.Server - Started Server@4eeb14e0{STARTING}[11.0.23,sto=0] @1116ms
+2024-11-04 11:15:07 [main] INFO  io.javalin.Javalin - Javalin started in 58ms \o/
+2024-11-04 11:15:07 [main] INFO  io.javalin.Javalin - Listening on http://localhost:7070/api
+2024-11-04 11:15:07 [main] INFO  io.javalin.Javalin - You are running Javalin 6.3.0 (released August 22, 2024).
+2024-11-04 11:15:19 [JettyServerThreadPool-26] INFO  dat.config.ApplicationConfig - Request 1 - POST /api/auth/login was handled with status code 200 OK
+2024-11-04 11:15:30 [JettyServerThreadPool-22] INFO  dat.config.ApplicationConfig - Request 2 - POST /api/trips/populate was handled with status code 201 Created
+2024-11-04 11:17:44 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.4.Final
+2024-11-04 11:17:44 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-11-04 11:17:44 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-04 11:17:44 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4097cac
+2024-11-04 11:17:44 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-04 11:17:45 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-11-04 11:17:45 [main] INFO  io.javalin.Javalin - Starting Javalin ...
+2024-11-04 11:17:45 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.23; built: 2024-08-14T01:40:17.906Z; git: 6fcf5ccaebd7ca13a0cb96c96adca699a24080a0; jvm 17.0.10+7-LTS
+2024-11-04 11:17:45 [main] INFO  o.e.j.s.s.DefaultSessionIdManager - Session workerName=node0
+2024-11-04 11:17:45 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@7afbf2a0{/api,null,AVAILABLE}
+2024-11-04 11:17:45 [main] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@1a785fd5{HTTP/1.1, (http/1.1)}{0.0.0.0:7070}
+2024-11-04 11:17:45 [main] INFO  org.eclipse.jetty.server.Server - Started Server@14a1769d{STARTING}[11.0.23,sto=0] @1102ms
+2024-11-04 11:17:45 [main] INFO  io.javalin.Javalin - Javalin started in 59ms \o/
+2024-11-04 11:17:45 [main] INFO  io.javalin.Javalin - Listening on http://localhost:7070/api
+2024-11-04 11:17:45 [main] INFO  io.javalin.Javalin - You are running Javalin 6.3.0 (released August 22, 2024).
+2024-11-04 11:17:49 [JettyServerThreadPool-26] INFO  dat.daos.impl.TripDAO - Retrieved trip with id: 1
+2024-11-04 11:17:49 [JettyServerThreadPool-26] INFO  dat.config.ApplicationConfig - Request 1 - GET /api/trips/1 was handled with status code 200 OK
+2024-11-04 11:21:18 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.4.Final
+2024-11-04 11:21:18 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-11-04 11:21:18 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-04 11:21:18 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1c3b9394
+2024-11-04 11:21:18 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-04 11:21:18 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-11-04 11:21:19 [main] INFO  io.javalin.Javalin - Starting Javalin ...
+2024-11-04 11:21:19 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.23; built: 2024-08-14T01:40:17.906Z; git: 6fcf5ccaebd7ca13a0cb96c96adca699a24080a0; jvm 17.0.10+7-LTS
+2024-11-04 11:21:19 [main] INFO  o.e.j.s.s.DefaultSessionIdManager - Session workerName=node0
+2024-11-04 11:21:19 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@547aaa32{/api,null,AVAILABLE}
+2024-11-04 11:21:19 [main] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@1d1bf7bf{HTTP/1.1, (http/1.1)}{0.0.0.0:7070}
+2024-11-04 11:21:19 [main] INFO  org.eclipse.jetty.server.Server - Started Server@591be8aa{STARTING}[11.0.23,sto=0] @1061ms
+2024-11-04 11:21:19 [main] INFO  io.javalin.Javalin - Javalin started in 57ms \o/
+2024-11-04 11:21:19 [main] INFO  io.javalin.Javalin - Listening on http://localhost:7070/api
+2024-11-04 11:21:19 [main] INFO  io.javalin.Javalin - You are running Javalin 6.3.0 (released August 22, 2024).
+2024-11-04 11:21:34 [JettyServerThreadPool-26] WARN  dat.controllers.ExceptionController - Security validation error at /api/trips: You need to log in!
+2024-11-04 11:21:34 [JettyServerThreadPool-26] INFO  dat.config.ApplicationConfig - Request 1 - POST /api/trips was handled with status code 401 Unauthorized
+2024-11-04 11:21:56 [JettyServerThreadPool-22] INFO  dat.config.ApplicationConfig - Request 2 - POST /api/auth/login was handled with status code 200 OK
+2024-11-04 11:22:02 [JettyServerThreadPool-23] ERROR dat.daos.impl.TripDAO - Database error during delete operation: Error deleting trip: Trip not found with id: 999
+2024-11-04 11:22:02 [JettyServerThreadPool-23] ERROR dat.controllers.ExceptionController - API Error at /api/trips/999: Database error occurred during delete operation
+2024-11-04 11:22:02 [JettyServerThreadPool-23] INFO  dat.config.ApplicationConfig - Request 3 - DELETE /api/trips/999 was handled with status code 500 Server Error
+2024-11-04 11:25:51 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.4.Final
+2024-11-04 11:25:51 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2024-11-04 11:25:51 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-04 11:25:51 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@25e2ab5a
+2024-11-04 11:25:51 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-04 11:25:51 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+2024-11-04 11:25:51 [main] INFO  io.javalin.Javalin - Starting Javalin ...
+2024-11-04 11:25:51 [main] INFO  org.eclipse.jetty.server.Server - jetty-11.0.23; built: 2024-08-14T01:40:17.906Z; git: 6fcf5ccaebd7ca13a0cb96c96adca699a24080a0; jvm 17.0.10+7-LTS
+2024-11-04 11:25:51 [main] INFO  o.e.j.s.s.DefaultSessionIdManager - Session workerName=node0
+2024-11-04 11:25:51 [main] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@6f867b0c{/api,null,AVAILABLE}
+2024-11-04 11:25:51 [main] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@7196a8f1{HTTP/1.1, (http/1.1)}{0.0.0.0:7070}
+2024-11-04 11:25:51 [main] INFO  org.eclipse.jetty.server.Server - Started Server@ff0e6d4{STARTING}[11.0.23,sto=0] @1080ms
+2024-11-04 11:25:51 [main] INFO  io.javalin.Javalin - Javalin started in 54ms \o/
+2024-11-04 11:25:51 [main] INFO  io.javalin.Javalin - Listening on http://localhost:7070/api
+2024-11-04 11:25:51 [main] INFO  io.javalin.Javalin - You are running Javalin 6.3.0 (released August 22, 2024).
+2024-11-04 11:26:01 [JettyServerThreadPool-26] INFO  dat.config.ApplicationConfig - Request 1 - POST /api/auth/login was handled with status code 200 OK
+2024-11-04 11:26:13 [JettyServerThreadPool-22] ERROR dat.controllers.ExceptionController - API Error at /api/trips/999: Trip not found with id: 999
+2024-11-04 11:26:13 [JettyServerThreadPool-22] INFO  dat.config.ApplicationConfig - Request 2 - DELETE /api/trips/999 was handled with status code 404 Not Found

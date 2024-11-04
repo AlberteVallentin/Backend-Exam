@@ -1,6 +1,6 @@
 # Trip Planning API Documentation
 
-## Task 3: API Endpoint Testing Results
+## Task 3 + 4: API Endpoint Testing Results
 
 Below are the test results from our trip.http file:
 
@@ -187,7 +187,7 @@ Content-Type: application/json
 ### 5. Add Guide to Trip
 ```http
 PUT http://localhost:7070/api/trips/1/guides/1
-Authorization: Bearer [user-token]
+Authorization: Bearer {{jwt_token}}
 
 HTTP/1.1 200 OK
 ```
@@ -234,6 +234,20 @@ Content-Type: application/json
   "error": "Trip name is required, Start time is required, End time is required, Longitude is required, Latitude is required, Valid price is required (must be greater than 0), Category is required",
   "status": "400 Bad Request",
   "timestamp": "2024-11-04 11:00:53.924"
+}
+```
+
+#### 3. Attempt to delete non-existent Trip
+```http
+DELETE http://localhost:7070/api/trips/999
+Authorization: Bearer {{jwt_token}}
+
+HTTP/1.1 404 Not Found
+Content-Type: application/json
+{
+  "error": "Trip not found with id: 999 - /api/trips/999",
+  "status": "404 Not Found",
+  "timestamp": "2024-11-04 11:02:06.036"
 }
 ```
 

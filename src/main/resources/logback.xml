@@ -14,6 +14,12 @@
         </encoder>
     </appender>
 
+    <!-- Specific logger for Populator -->
+    <logger name="dat.config.Populator" level="debug" additivity="false">
+        <appender-ref ref="DEBUGFILE" />
+        <appender-ref ref="CONSOLE" />
+    </logger>
+
     <appender name="DEBUGFILE" class="ch.qos.logback.core.FileAppender">
         <file>logs/debug.log</file>
         <append>true</append>

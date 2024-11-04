@@ -38,7 +38,6 @@ Content-Type: {{contentType}}
 }
 
 
-
 ### Add admin role to user
 POST {{url}}/auth/user/addrole
 Content-Type: application/json
@@ -131,6 +130,7 @@ Authorization: Bearer {{jwt_token}}
 GET {{url}}/trips/999
 Accept: {{contentType}}
 
+
 ### Test unauthorized access (no token)
 POST {{url}}/trips
 Content-Type: {{contentType}}
@@ -144,6 +144,10 @@ Content-Type: {{contentType}}
   "price": 299.99,
   "category": "CITY"
 }
+
+### Test delete non-existent trip
+DELETE {{url}}/trips/999
+Authorization: Bearer {{jwt_token}}
 
 
 ### Reset token (if needed)
