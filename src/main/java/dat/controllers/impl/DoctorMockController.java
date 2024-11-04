@@ -5,10 +5,7 @@ import dat.daos.impl.DoctorMockDAO;
 import dat.dtos.DoctorDTO;
 import dat.enums.Speciality;
 import dat.exceptions.ValidationException;
-import dat.security.exceptions.SecurityValidationException;
 import io.javalin.http.Context;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
@@ -26,14 +23,14 @@ public class DoctorMockController implements IController<DoctorDTO, Integer> {
     @Override
     public void read(Context ctx) throws ValidationException {
         int id = validateAndGetId(ctx);
-        DoctorDTO doctor = dao.read(id);
+        DoctorDTO doctor = dao.getById(id);
         ctx.json(doctor);
         ctx.status(200);
     }
 
     @Override
     public void readAll(Context ctx) {
-        List<DoctorDTO> doctors = dao.readAll();
+        List<DoctorDTO> doctors = dao.getAll();
         ctx.json(doctors);
         ctx.status(200);
     }

@@ -12,8 +12,8 @@ import java.util.Set;
  * Author: Thomas Hartmann
  */
 public interface ISecurityController {
-    Handler login(); // to get a token
-    Handler register(); // to get a user
+    Handler login(); // to getById a token
+    Handler register(); // to getById a user
     Handler authenticate(); // to verify roles inside token
     boolean authorize(UserDTO userDTO, Set<RouteRole> allowedRoles) throws SecurityValidationException; // to verify user roles
     String createToken(UserDTO user) throws Exception;

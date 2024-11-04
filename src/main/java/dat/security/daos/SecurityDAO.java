@@ -23,7 +23,7 @@ public class SecurityDAO implements ISecurityDAO {
         return emf.createEntityManager();
     }
 
-    // Method to get a verified user by email and password
+    // Method to getById a verified user by email and password
     @Override
     public UserDTO getVerifiedUser(String email, String password) throws SecurityValidationException {
         try (EntityManager em = getEntityManager()) {

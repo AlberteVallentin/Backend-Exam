@@ -29,7 +29,7 @@ public class DoctorDAO implements IDAO<DoctorDTO, Integer> {
     }
 
     @Override
-    public DoctorDTO read(Integer id) throws ApiException {
+    public DoctorDTO getById(Integer id) throws ApiException {
         try (EntityManager em = emf.createEntityManager()) {
             Doctor doctor = em.find(Doctor.class, id);
             if (doctor == null) {
@@ -44,7 +44,7 @@ public class DoctorDAO implements IDAO<DoctorDTO, Integer> {
     }
 
     @Override
-    public List<DoctorDTO> readAll() throws ApiException {
+    public List<DoctorDTO> getAll() throws ApiException {
         try (EntityManager em = emf.createEntityManager()) {
             TypedQuery<Doctor> query = em.createQuery("SELECT d FROM Doctor d", Doctor.class);
             List<DoctorDTO> doctors = query.getResultList().stream()
@@ -134,7 +134,7 @@ public class DoctorDAO implements IDAO<DoctorDTO, Integer> {
     }
 
 
-    @Override
+
     public boolean validatePrimaryKey(Integer id) throws ApiException {
         try (EntityManager em = emf.createEntityManager()) {
             return em.find(Doctor.class, id) != null;

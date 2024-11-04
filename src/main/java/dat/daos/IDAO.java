@@ -10,12 +10,11 @@ import java.util.List;
  */
 public interface IDAO<T, ID> {
     // Basic CRUD operations
-    T read(ID id) throws ApiException;
-    List<T> readAll() throws ApiException;
+    T getById(ID id) throws ApiException;
+    List<T> getAll() throws ApiException;
     T create(T t) throws ApiException;
     T update(ID id, T t) throws ApiException;
     void delete(ID id) throws ApiException;
 
-    // Validation
-    boolean validatePrimaryKey(ID id) throws ApiException;
+
 }

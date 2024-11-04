@@ -18,7 +18,7 @@ public class DoctorControllerDB implements IController<DoctorDTO, Integer> {
     public void read(Context ctx) throws ValidationException, ApiException {
         try {
             int id = Integer.parseInt(ctx.pathParam("id"));
-            DoctorDTO doctor = doctorDAO.read(id);
+            DoctorDTO doctor = doctorDAO.getById(id);
             ctx.status(200).json(doctor);
         } catch (NumberFormatException e) {
             throw new ValidationException(400, "Invalid ID format: must be a number");
@@ -27,7 +27,7 @@ public class DoctorControllerDB implements IController<DoctorDTO, Integer> {
 
     @Override
     public void readAll(Context ctx) throws ApiException {
-        ctx.json(doctorDAO.readAll());
+        ctx.json(doctorDAO.getAll());
         ctx.status(200);
     }
 

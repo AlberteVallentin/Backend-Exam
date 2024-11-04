@@ -32,7 +32,7 @@ public class DoctorMockDAO implements IDAO<DoctorDTO, Integer> {
     }
 
     @Override
-    public List<DoctorDTO> readAll() {
+    public List<DoctorDTO> getAll() {
         if (doctorMap.isEmpty()) {
             throw new EntityNotFoundException("No doctors found in the database");
         }
@@ -40,7 +40,7 @@ public class DoctorMockDAO implements IDAO<DoctorDTO, Integer> {
     }
 
     @Override
-    public DoctorDTO read(Integer id) {
+    public DoctorDTO getById(Integer id) {
         DoctorDTO doctor = doctorMap.get(id);
         if (doctor == null) {
             throw new EntityNotFoundException("Doctor not found with id: " + id);
@@ -98,7 +98,7 @@ public class DoctorMockDAO implements IDAO<DoctorDTO, Integer> {
         return doctors;
     }
 
-    @Override
+
     public boolean validatePrimaryKey(Integer id) {
         return doctorMap.containsKey(id);
     }

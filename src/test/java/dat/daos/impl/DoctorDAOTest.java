@@ -75,21 +75,21 @@ class DoctorDAOTest {
     }
 
     @Test
-    void testReadExistingDoctor() throws ApiException {
-        DoctorDTO found = dao.read(testDoctor1.getId());
+    void testGetByIdExistingDoctor() throws ApiException {
+        DoctorDTO found = dao.getById(testDoctor1.getId());
         assertNotNull(found);
         assertEquals(TEST_DOC1_NAME, found.getName());
     }
 
     @Test
-    void testReadNonExistentDoctor() {
-        ApiException exception = assertThrows(ApiException.class, () -> dao.read(999999));
+    void testGetByIdNonExistentDoctor() {
+        ApiException exception = assertThrows(ApiException.class, () -> dao.getById(999999));
         assertEquals("Doctor not found with id: 999999", exception.getMessage());
     }
 
     @Test
-    void testReadAll() throws ApiException {
-        List<DoctorDTO> doctors = dao.readAll();
+    void testGetByIdAll() throws ApiException {
+        List<DoctorDTO> doctors = dao.getAll();
         assertNotNull(doctors);
         assertEquals(2, doctors.size());
     }
@@ -126,7 +126,7 @@ class DoctorDAOTest {
     @Test
     void testDeleteDoctor() throws ApiException {
         dao.delete(testDoctor2.getId());
-        ApiException exception = assertThrows(ApiException.class, () -> dao.read(testDoctor2.getId()));
+        ApiException exception = assertThrows(ApiException.class, () -> dao.getById(testDoctor2.getId()));
         assertEquals("Doctor not found with id: " + testDoctor2.getId(), exception.getMessage());
     }
 
