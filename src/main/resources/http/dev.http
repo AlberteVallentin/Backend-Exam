@@ -65,9 +65,22 @@ Content-Type: {{contentType}}
 GET {{url}}/trips
 Accept: {{contentType}}
 
+
 ### Get specific trip
 GET {{url}}/trips/1
 Accept: {{contentType}}
+
+
+
+### Get trips by category
+GET {{url}}/trips/category/SEA
+Accept: {{contentType}}
+
+
+### Get guide total prices
+GET {{url}}/trips/guides/totalprice
+Accept: {{contentType}}
+
 
 ### Trip Endpoints - User Access (requires jwt_token)
 
@@ -148,7 +161,6 @@ Content-Type: {{contentType}}
 ### Test delete non-existent trip
 DELETE {{url}}/trips/999
 Authorization: Bearer {{jwt_token}}
-
 
 ### Reset token (if needed)
 GET {{url}}/auth/test

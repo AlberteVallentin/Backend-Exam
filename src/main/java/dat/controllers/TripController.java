@@ -3,12 +3,16 @@ package dat.controllers;
 import dat.config.HibernateConfig;
 import dat.daos.impl.TripDAO;
 import dat.dtos.TripDTO;
+import dat.enums.TripCategory;
 import dat.exceptions.ApiException;
 import dat.exceptions.ValidationException;
 import io.javalin.http.Context;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class TripController {
     private final TripDAO tripDAO = TripDAO.getInstance(HibernateConfig.getEntityManagerFactory());
@@ -59,6 +63,35 @@ public class TripController {
             return Integer.parseInt(ctx.pathParam("id"));
         } catch (NumberFormatException e) {
             throw new ValidationException(400, "Invalid ID format");
+        }
+    }
+
+    public void getTripsByCategory(Context ctx) throws ApiException, ValidationException {
+        try {
+            String categoryStr = ctx.pathParam("category").toUpperCase();
+            TripCategory category = TripCategory.valueOf(categoryStr);
+
+            List<TripDTO> trips = tripDAO.getTripsByCategory(category);
+            ctx.json(trips);
+            ctx.status(200);
+
+        } catch (IllegalArgumentException e) {
+            String validCategories = Arrays.stream(TripCategory.values())
+                .map(Enum::name)
+                .collect(Collectors.joining(", "));
+
+            throw new ValidationException(400,
+                "Invalid category. Valid categories are: " + validCategories);
+        }
+    }
+
+    public void getGuidesTotalPrices(Context ctx) throws ApiException {
+        try {
+            List<Map<String, Object>> guideTotals = tripDAO.getGuidesTotalTripPrices();
+            ctx.json(guideTotals);
+            ctx.status(200);
+        } catch (Exception e) {
+            throw new ApiException(500, "Error retrieving guide total prices");
         }
     }
 

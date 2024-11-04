@@ -28,6 +28,9 @@ public class TripRoutes {
                     dat.config.Populator.populate(HibernateConfig.getEntityManagerFactory());
                     ctx.status(201).json("{\"message\": \"Database populated successfully\"}");
                 }, RoleType.ADMIN);
+
+                get("/category/{category}", tripController::getTripsByCategory, RoleType.ANYONE);
+                get("/guides/totalprice", tripController::getGuidesTotalPrices, RoleType.ANYONE);
             });
         };
     }

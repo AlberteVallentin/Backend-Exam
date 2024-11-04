@@ -6,6 +6,7 @@ import dat.daos.ITripGuideDAO;
 import dat.dtos.TripDTO;
 import dat.entities.Trip;
 import dat.entities.Guide;
+import dat.enums.TripCategory;
 import dat.exceptions.ApiException;
 import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
@@ -13,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -181,6 +183,57 @@ public class TripDAO implements IDAO<TripDTO, Integer>, ITripGuideDAO {
         } catch (PersistenceException e) {
             LOGGER.error("Database error while fetching trips by guide: {}", e.getMessage());
             throw new ApiException(500, "Database error occurred while fetching trips by guide");
+        }
+    }
+
+    public List<TripDTO> getTripsByCategory(TripCategory category) throws ApiException {
+        try (EntityManager em = emf.createEntityManager()) {
+            TypedQuery<Trip> query = em.createQuery(
+                "SELECT t FROM Trip t WHERE t.category = :category",
+                Trip.class);
+            query.setParameter("category", category);
+
+            List<TripDTO> trips = query.getResultList().stream()
+                .map(TripDTO::new)
+                .collect(Collectors.toList());
+
+            if (trips.isEmpty()) {
+                throw new ApiException(404, "No trips found for category: " + category);
+            }
+
+            LOGGER.info("Retrieved {} trips for category {}", trips.size(), category);
+            return trips;
+        } catch (Exception e) {
+            LOGGER.error("Error getting trips by category: {}", e.getMessage());
+            throw new ApiException(500, "Error fetching trips by category: " + e.getMessage());
+        }
+    }
+
+    public List<Map<String, Object>> getGuidesTotalTripPrices() throws ApiException {
+        try (EntityManager em = emf.createEntityManager()) {
+            // Direct JPQL query that returns the exact format we need
+            String jpql = """
+                SELECT NEW map(
+                    g.id as guideId,
+                    COALESCE(SUM(t.price), 0.0) as totalPrice
+                )
+                FROM Guide g 
+                LEFT JOIN g.trips t 
+                GROUP BY g.id
+                """;
+
+            @SuppressWarnings("unchecked")
+            List<Map<String, Object>> results = em.createQuery(jpql).getResultList();
+
+            if (results.isEmpty()) {
+                throw new ApiException(404, "No guide price data found");
+            }
+
+            LOGGER.info("Retrieved price totals for {} guides", results.size());
+            return results;
+        } catch (Exception e) {
+            LOGGER.error("Error calculating guide totals: {}", e.getMessage());
+            throw new ApiException(500, "Error calculating guide total prices: " + e.getMessage());
         }
     }
 

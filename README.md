@@ -2,7 +2,7 @@
 
 ## Task 3 + 4: API Endpoint Testing Results
 
-Below are the test results from our trip.http file:
+Below are the test results from our dev.http file:
 
 ### 1. Get All Trips
 ```http
@@ -273,3 +273,111 @@ This aligns with PUT's semantics of updating an existing resource, whereas POST 
 | DELETE | /api/trips/{id}                  | ADMIN       | Delete a trip                  |
 | PUT    | /api/trips/{tripId}/guides/{guideId} | USER, ADMIN | Add a guide to a trip      |
 | POST   | /api/trips/populate              | ADMIN       | Populate database with test data|
+
+
+## Task 5:
+
+### Get Trips by Category
+
+```http
+GET http://localhost:7070/api/trips?category=SEA
+Accept: application/json
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+[
+  {
+    "id": 4,
+    "startTime": "2024-11-08T10:00:30.812Z",
+    "endTime": "2024-11-08T14:00:30.812Z",
+    "longitude": 12.6298,
+    "latitude": 55.7069,
+    "name": "Øresund Sea Adventure",
+    "price": 599.99,
+    "category": "SEA",
+    "guide": {
+      "id": 2,
+      "firstName": "Sarah",
+      "lastName": "Johnson",
+      "email": "sarah.j@guides.com",
+      "phone": "+45 87654321",
+      "yearsOfExperience": 8
+    }
+  }
+]
+```
+
+### Get Guides with Total Price
+
+```http
+GET http://localhost:7070/api/trips/guides/totalprice
+Accept: application/json
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+[
+  {
+    "totalPrice": 699.98,
+    "guideId": 1
+  },
+  {
+    "totalPrice": 1049.98,
+    "guideId": 2
+  }
+]
+```
+
+
+
+
+
+
+
+
+## Technical Implementation Decisions
+
+### Use of JPA (JPQL) vs Java Streams
+
+In implementing the guide total price calculation (`/trips/guides/totalprice`), I chose to use JPQL (Java Persistence Query Language) over Java Streams for several key reasons:
+
+1. **Performance Optimization**
+    - JPQL performs aggregation (SUM) at the database level
+    - Streams would require loading all trips and guides into memory first
+    - Database engines are optimized for grouping and aggregation operations
+
+2. **Memory Efficiency**
+    - JPQL only transfers the final aggregated results
+    - Streams approach would require loading entire object graphs
+    - Reduced memory footprint in the application server
+
+3. **Network Optimization**
+    - Minimizes data transfer between database and application
+    - Only aggregated results traverse the network
+    - Particularly important for larger datasets
+
+4. **Query Example**
+```sql
+SELECT NEW map(
+    g.id as guideId,
+    COALESCE(SUM(t.price), 0.0) as totalPrice
+)
+FROM Guide g 
+LEFT JOIN g.trips t 
+GROUP BY g.id
+```
+
+### Use of @SuppressWarnings("unchecked")
+
+In the DAO implementation, I use `@SuppressWarnings("unchecked")` for the JPQL query result. Here's why:
+
+1. **Type Safety vs Runtime Safety**
+    - JPQL's `NEW map` constructor can't be statically typed at compile time
+    - The query result is type-safe at runtime but Java can't verify this during compilation
+    - We know the exact structure of our result (List<Map<String, Object>>)
+
+2. **Compiler Behavior**
+    - Java's type system requires us to cast the raw List returned by JPQL
+    - The compiler warns about this cast, even though we know it's safe
+    - @SuppressWarnings removes the warning for this specific, safe usage
+   
+This implementation provides the optimal balance between performance, resource usage, and type safety while maintaining clean, maintainable code.
